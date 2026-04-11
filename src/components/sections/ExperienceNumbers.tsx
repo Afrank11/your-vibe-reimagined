@@ -3,7 +3,7 @@ import AnimatedSection from '../AnimatedSection';
 
 const stats = [
   { label: "Lines of Code", value: 50000, suffix: "+" },
-  { label: "Projects Built", value: 30, suffix: "+" },
+  { label: "Projects Built", value: 19, suffix: "+" },
   { label: "Years Experience", value: 10, suffix: "+" },
   { label: "Hours Coding", value: 5000, suffix: "+" },
 ];

@@ -8,8 +8,10 @@ import profileImg from '@/assets/Ateh.jpg';
 const titles = [
   "Network Engineer",
   "Developer",
+  "Vibe Coder",
   "Builder",
   "Cybersecurity Enthusiast",
+  "Entrepreneur",
 ];
 
 const HeroSection = () => {
@@ -40,7 +42,7 @@ const HeroSection = () => {
   }, [charIndex, isDeleting, titleIndex]);
 
   return (
-    <section className="min-h-screen flex items-center justify-center relative pt-24 md:pt-16 px-4">
+    <section className="min-h-screen flex items-center justify-center relative pt-28 md:pt-16 px-4">
       <div className="container mx-auto text-center max-w-4xl relative z-10">
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
@@ -72,7 +74,7 @@ const HeroSection = () => {
           className="text-3xl md:text-5xl lg:text-6xl font-bold mb-4"
         >
           <span className="text-foreground">Ateh </span>
-          <span className="text-primary text-glow">Frank Ateh</span>
+          <span className="text-primary text-glow hero-name-hover">Frank Ateh</span>
         </motion.h1>
 
         <motion.div
@@ -82,7 +84,7 @@ const HeroSection = () => {
           className="font-mono-game text-lg md:text-xl text-muted-foreground mb-8 h-8"
         >
           <span className="text-primary">&gt; </span>
-          {titles[titleIndex].slice(0, charIndex)}
+          <span className="hero-typing-text">{titles[titleIndex].slice(0, charIndex)}</span>
           <span className="animate-blink text-primary">|</span>
         </motion.div>
 
@@ -119,7 +121,9 @@ const HeroSection = () => {
             <BookOpen size={16} /> My Story
           </Link>
           <a
-            href="#"
+            href="/Ateh_Frank_Ateh_CV.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
             className="flex items-center gap-2 px-6 py-3 border border-border text-foreground rounded-lg font-mono-game text-sm hover:border-primary hover:text-primary transition-all hover:scale-105"
             onClick={playClick}
             onMouseEnter={playHover}
@@ -141,14 +145,14 @@ const HeroSection = () => {
           animate={{ opacity: 1 }}
           transition={{ delay: 1.3 }}
         >
-          <a
-            href="/contact"
+          <Link
+            to="/contact"
             className="inline-flex items-center gap-2 px-8 py-3 bg-primary text-primary-foreground rounded-full font-orbitron text-sm font-bold hover:scale-105 transition-transform box-glow"
             onClick={playClick}
             onMouseEnter={playHover}
           >
             🚀 Hire Me Now
-          </a>
+          </Link>
         </motion.div>
 
         <motion.div

@@ -9,27 +9,43 @@ export const EducationSection = () => (
       <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
         <span className="text-primary text-glow">Education</span>
       </h2>
-      <motion.div
-        initial={{ opacity: 0, scale: 0.95 }}
-        whileInView={{ opacity: 1, scale: 1 }}
-        viewport={{ once: true }}
-        className="bg-card border border-border rounded-xl p-8 text-center hover:border-primary/30 transition-colors"
-      >
-        <GraduationCap size={40} className="text-primary mx-auto mb-4" />
-        <h3 className="font-bold text-xl mb-2">SUP'PTIC</h3>
-        <p className="text-muted-foreground text-sm mb-1">Higher Institute of Posts, Telecommunications & ICT</p>
-        <p className="text-primary font-mono-game text-sm">Network Engineering & Cybersecurity</p>
-        <p className="text-muted-foreground text-xs mt-2">Yaoundé, Cameroon</p>
-      </motion.div>
+      <div className="space-y-6">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          className="bg-card border border-border rounded-xl p-8 text-center hover:border-primary/30 transition-colors"
+        >
+          <GraduationCap size={40} className="text-primary mx-auto mb-4" />
+          <h3 className="font-bold text-xl mb-2">SUP'PTIC</h3>
+          <p className="text-muted-foreground text-sm mb-1">École Nationale Supérieure des Postes, Télécommunications et TIC</p>
+          <p className="text-primary font-mono-game text-sm">Engineering Degree — Computer Networks & Software Engineering</p>
+          <p className="text-muted-foreground text-xs mt-2">Yaoundé, Cameroon • 2023 – 2026</p>
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.1 }}
+          className="bg-card border border-border rounded-xl p-8 text-center hover:border-primary/30 transition-colors"
+        >
+          <GraduationCap size={40} className="text-primary mx-auto mb-4" />
+          <h3 className="font-bold text-xl mb-2">Franky Comprehensive Secondary School</h3>
+          <p className="text-muted-foreground text-sm mb-1">High School Diploma</p>
+          <p className="text-primary font-mono-game text-sm">Average: 16.03/20 | SAT: 1340</p>
+          <p className="text-muted-foreground text-xs mt-2">Yaoundé, Cameroon • Graduated 2020</p>
+        </motion.div>
+      </div>
     </div>
   </AnimatedSection>
 );
 
 const impactItems = [
   { title: "Terra Talent", role: "Co-Founder & Developer", desc: "Talent marketplace connecting African professionals with global opportunities" },
-  { title: "Absurd Geeks", role: "Technical Lead", desc: "Tech community fostering innovation and collaboration among young developers" },
-  { title: "Terra Crowd Fund", role: "Developer", desc: "Crowdfunding platform empowering African entrepreneurs and startups" },
-  { title: "CAMTEL", role: "Network Intern", desc: "Cameroon Telecommunications — network infrastructure and maintenance" },
+  { title: "Absurd Geeks", role: "Founder & Technical Lead", desc: "Tech community for curiosity-driven builders fostering innovation among young developers" },
+  { title: "Terra Crowd Fund", role: "Co-Founder & Developer", desc: "Crowdfunding platform empowering African entrepreneurs and startups" },
+  { title: "CAMTEL", role: "Network Intern", desc: "Cameroon Telecommunications — network infrastructure management and maintenance" },
+  { title: "Agripreneur Cameroon", role: "Web Developer", desc: "Built the official website for the Who Wants to Be an Agripreneur Cameroon program" },
 ];
 
 export const ImpactSection = () => (
@@ -66,10 +82,16 @@ const accomplishments = [
   "Built a 7-server Linux enterprise infrastructure from scratch",
   "Designed and deployed enterprise cybersecurity virtual lab",
   "Developed multi-paradigm NoSQL social media database system",
-  "Built autonomous parking robot with computer vision",
+  "Built autonomous parking robot with ultrasonic sensors",
   "Co-founded Terra Talent — connecting African talent globally",
-  "Created Absurd Geeks tech community",
-  "Completed 50,000+ lines of production code",
+  "Founded Absurd Geeks tech community",
+  "Selected for U.S. Embassy entrepreneurship accelerator",
+  "Red Feather Award 2017 — Best Child Actor in Cameroon",
+  "Yale Model African Union delegate",
+  "Gold Medalist — Nsyimeyong Soccer Tournament",
+  "Top 15% — International Youth Math Challenge",
+  "FETUC & UNIFAC Representative at SUP'PTIC",
+  "Completed 50,000+ lines of production code across 19+ projects",
 ];
 
 export const AccomplishmentsSection = () => (
@@ -85,7 +107,7 @@ export const AccomplishmentsSection = () => (
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: i * 0.08 }}
+            transition={{ delay: i * 0.05 }}
             className="flex items-start gap-3 p-3 bg-card border border-border rounded-lg hover:border-primary/30 transition-colors"
           >
             <Trophy size={16} className="text-primary mt-0.5 shrink-0" />
@@ -95,7 +117,9 @@ export const AccomplishmentsSection = () => (
       </div>
       <div className="text-center">
         <a
-          href="#"
+          href="/Ateh_Frank_Ateh_CV.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
           className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground rounded-lg font-mono-game text-sm hover:opacity-90 transition-opacity"
         >
           <Download size={16} /> Download CV
@@ -108,18 +132,18 @@ export const AccomplishmentsSection = () => (
 const caseStudies = [
   {
     title: "Enterprise Security Lab",
-    desc: "Built a comprehensive virtual security lab with pfSense, Kali Linux, Security Onion, and Metasploitable for penetration testing training.",
-    tags: ["Cybersecurity", "Virtualization", "pfSense"],
+    desc: "Built a comprehensive multi-OS virtual security lab with MikroTik, Wazuh, Zabbix, and Metasploit for penetration testing training across two subnetworks.",
+    tags: ["Cybersecurity", "Virtualization", "MikroTik"],
   },
   {
     title: "7-Server Linux Infrastructure",
-    desc: "Designed and deployed a complete enterprise network with DNS, DHCP, HTTP, FTP, NFS, Samba, and SSH services across Ubuntu and CentOS servers.",
+    desc: "Deployed seven servers on a single Ubuntu host with DHCP, DNS, Apache, Postfix, NFS, SSH, and Samba with Active Directory — all clients consumed every service.",
     tags: ["Linux", "Networking", "Infrastructure"],
   },
   {
     title: "4-Paradigm NoSQL Database",
-    desc: "Implemented a social media database using four NoSQL paradigms: document (MongoDB), key-value (Redis), column-family (Cassandra), and graph (Neo4j).",
-    tags: ["NoSQL", "MongoDB", "Neo4j"],
+    desc: "Social media database using MongoDB, Cassandra, Redis, and Neo4j simultaneously. Flask and FastAPI frontend. Containerized with Docker.",
+    tags: ["NoSQL", "Docker", "Flask"],
   },
 ];
 
@@ -217,25 +241,33 @@ export const BlogsSection = () => (
 );
 
 const repos = [
-  { name: "cybersecurity-lab", desc: "Virtual security lab setup", lang: "Shell", stars: 12 },
-  { name: "linux-infrastructure", desc: "7-server enterprise network", lang: "Bash", stars: 8 },
-  { name: "nosql-social-db", desc: "Multi-paradigm NoSQL system", lang: "Python", stars: 15 },
-  { name: "parking-robot", desc: "Autonomous parking with CV", lang: "Python", stars: 6 },
-  { name: "portfolio-v2", desc: "Gaming-themed portfolio", lang: "TypeScript", stars: 10 },
-  { name: "terra-talent", desc: "Talent marketplace platform", lang: "PHP", stars: 5 },
+  { name: "cybersecurity-lab", desc: "Virtual security lab setup with Kali, pfSense, Wazuh", lang: "Shell", stars: 12 },
+  { name: "linux-infrastructure", desc: "7-server enterprise network on Ubuntu", lang: "Bash", stars: 8 },
+  { name: "nosql-social-db", desc: "4-paradigm NoSQL social media database", lang: "Python", stars: 15 },
+  { name: "parking-robot", desc: "Autonomous parking with ultrasonic sensors", lang: "C++", stars: 6 },
+  { name: "portfolio-v2", desc: "Gaming-themed portfolio in React+TS", lang: "TypeScript", stars: 10 },
+  { name: "terra-talent", desc: "African talent marketplace platform", lang: "PHP", stars: 5 },
+  { name: "school-management", desc: "Multi-user school admin system", lang: "PHP", stars: 4 },
+  { name: "ai-network-assistant", desc: "AI-powered networking study app", lang: "Python", stars: 7 },
+  { name: "weather-app", desc: "Android weather app with OpenWeather API", lang: "Java", stars: 3 },
 ];
 
 export const GitHubSection = () => (
   <AnimatedSection className="py-20 px-4 relative z-10">
     <div className="container mx-auto max-w-5xl">
-      <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
+      <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">
         GitHub <span className="text-primary text-glow">Activity</span>
       </h2>
+      <p className="text-muted-foreground text-center mb-12 font-mono-game text-sm">
+        <a href="https://github.com/Afrank11" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
+          &gt; github.com/Afrank11
+        </a>
+      </p>
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {repos.map((r, i) => (
           <motion.a
             key={r.name}
-            href={`https://github.com/FrankAteh/${r.name}`}
+            href={`https://github.com/Afrank11/${r.name}`}
             target="_blank"
             rel="noopener noreferrer"
             initial={{ opacity: 0, scale: 0.95 }}
@@ -256,16 +288,26 @@ export const GitHubSection = () => (
           </motion.a>
         ))}
       </div>
+      <div className="text-center mt-8">
+        <a 
+          href="https://github.com/Afrank11" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="text-primary font-mono-game text-sm hover:underline"
+        >
+          View Full GitHub Profile →
+        </a>
+      </div>
     </div>
   </AnimatedSection>
 );
 
 const hobbies = [
   { emoji: "♟️", title: "Chess", desc: "Strategic thinking on and off the board" },
-  { emoji: "⚽", title: "Football", desc: "Team player on the pitch" },
+  { emoji: "⚽", title: "Football", desc: "Gold medalist on the pitch" },
   { emoji: "🎮", title: "Gaming", desc: "FPS and strategy games enthusiast" },
   { emoji: "🔧", title: "Side Projects", desc: "Always building something new" },
-  { emoji: "🏴‍☠️", title: "CTF Challenges", desc: "Capture the flag competitions" },
+  { emoji: "🏴‍☠️", title: "CTF Challenges", desc: "HackThisSite & capture the flag" },
   { emoji: "📚", title: "Learning", desc: "Continuous self-improvement" },
 ];
 
@@ -325,7 +367,10 @@ export const MarqueeTicker = () => {
     "💾 4-Paradigm NoSQL Database",
     "🌍 Terra Talent Platform",
     "👨‍💻 50,000+ Lines of Code",
-    "🎓 SUP'PTIC Graduate",
+    "🎓 SUP'PTIC Engineering Student",
+    "☁️ OpenStack Private Cloud",
+    "🏅 Red Feather Award Winner",
+    "📱 19+ Projects Built",
   ];
 
   return (
@@ -358,7 +403,9 @@ export const CTASection = () => (
           📬 Contact Me
         </Link>
         <a
-          href="#"
+          href="/Ateh_Frank_Ateh_CV.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
           className="px-8 py-3 border border-primary text-primary rounded-lg font-mono-game text-sm hover:bg-primary/10 transition-all hover:scale-105"
         >
           📄 Download CV
