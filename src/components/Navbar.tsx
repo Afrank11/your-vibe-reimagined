@@ -31,7 +31,7 @@ const Navbar = () => {
           className="font-orbitron text-xl font-bold text-primary text-glow"
           onClick={playClick}
         >
-          FA
+          AFA
         </Link>
 
         {/* Desktop nav */}
