@@ -26,29 +26,34 @@ const AboutSection = () => {
             <div className="space-y-3 mb-6">
               <div className="flex items-center gap-3 font-mono-game text-sm">
                 <span className="text-primary">📍</span>
-                <span className="text-muted-foreground">Cameroon</span>
+                <span className="text-muted-foreground">Yaoundé, Cameroon</span>
               </div>
               <div className="flex items-center gap-3 font-mono-game text-sm">
                 <span className="text-primary">🎓</span>
-                <span className="text-muted-foreground">Network Engineering & Cybersecurity</span>
+                <span className="text-muted-foreground">SUP'PTIC — Computer Networks & Software Engineering</span>
               </div>
               <div className="flex items-center gap-3 font-mono-game text-sm">
                 <span className="text-primary">💻</span>
-                <span className="text-muted-foreground">Full-Stack Developer</span>
+                <span className="text-muted-foreground">Developer & Vibe Coder</span>
               </div>
               <div className="flex items-center gap-3 font-mono-game text-sm">
                 <span className="text-primary">🔒</span>
                 <span className="text-muted-foreground">Cybersecurity Enthusiast</span>
               </div>
+              <div className="flex items-center gap-3 font-mono-game text-sm">
+                <span className="text-primary">🚀</span>
+                <span className="text-muted-foreground">Entrepreneur</span>
+              </div>
             </div>
             <p className="text-muted-foreground mb-4 text-sm leading-relaxed">
-              I'm Ateh Frank Ateh — a network engineer, developer, and builder from Cameroon. 
-              I'm passionate about bridging the gap between infrastructure and software, 
-              building secure systems, and crafting clean, impactful digital experiences.
+              I'm Ateh Frank Ateh — a future Ingénieur Informatique et Réseaux studying at SUP'PTIC, Yaoundé, Cameroon. 
+              I'm a developer, vibe coder, and entrepreneur. A vibe coder is someone who builds with instinct, curiosity, 
+              and energy — not just following tutorials but actually feeling and understanding systems deeply.
             </p>
             <p className="text-muted-foreground mb-6 text-sm leading-relaxed">
-              Whether it's architecting a 7-server Linux infrastructure, building a cybersecurity virtual lab, 
-              or developing full-stack web applications with React and Laravel — I bring a builder's mindset to everything I do.
+              With over a decade of experience, I build websites, mobile apps, and network applications. 
+              I do security auditing and monitoring, and I build enterprise-grade security labs, deploy multi-server Linux infrastructures, 
+              and program autonomous robots.
             </p>
             <Link
               to="/about"

@@ -30,10 +30,10 @@ const About = () => {
         <AnimatedSection delay={0.1}>
           <div className="grid sm:grid-cols-2 gap-4 mb-12">
             {[
-              { icon: "📍", label: "Location", value: "Cameroon" },
-              { icon: "🎓", label: "Education", value: "SUP'PTIC — Network Engineering" },
-              { icon: "💻", label: "Focus", value: "Full-Stack Dev & Cybersecurity" },
-              { icon: "🌍", label: "Mission", value: "Building impactful tech for Africa" },
+              { icon: "📍", label: "Location", value: "Yaoundé, Cameroon" },
+              { icon: "🎓", label: "Education", value: "SUP'PTIC — Computer Networks & Software Engineering" },
+              { icon: "💻", label: "Focus", value: "Developer, Vibe Coder & Entrepreneur" },
+              { icon: "🌍", label: "Mission", value: "Building impactful tech from Africa" },
               { icon: "🔒", label: "Passion", value: "Cybersecurity & Network Defense" },
               { icon: "🚀", label: "Status", value: "Available for collaboration" },
             ].map(f => (
@@ -56,22 +56,31 @@ const About = () => {
               </h2>
               <div className="space-y-4 text-muted-foreground text-sm leading-relaxed">
                 <p>
-                  I'm Ateh Frank Ateh — a network engineer, developer, and builder from Cameroon. My journey into tech started with a deep curiosity about how networks work, how systems communicate, and how security can protect them.
+                  I'm Ateh Frank Ateh, a future Ingénieur Informatique et Réseaux (Computer Networks & Software Engineering) studying at SUP'PTIC, Yaoundé, Cameroon.
                 </p>
                 <p>
-                  At SUP'PTIC (Higher Institute of Posts, Telecommunications & ICT), I dove deep into network engineering and cybersecurity. But I didn't stop there — I taught myself web development, databases, and software engineering because I believe the best engineers understand the full stack, from cable to cloud.
+                  I'm a developer, vibe coder, and entrepreneur. A vibe coder is someone who builds with instinct, curiosity, and energy — not just following tutorials but actually feeling and understanding systems deeply. I don't just write code; I feel the architecture, debug by intuition, and ship things that shouldn't work but somehow do.
                 </p>
                 <p>
-                  I've built enterprise Linux infrastructures with 7 servers running DNS, DHCP, HTTP, FTP, NFS, Samba, and SSH. I've designed cybersecurity virtual labs with pfSense, Kali Linux, and Security Onion. I've created multi-paradigm NoSQL databases and autonomous robots with computer vision.
+                  My journey started when my sister blocked my phone when I was 14. Everyone said it was dead. I said "let me try." That moment changed everything. From that point, I became the kid who took things apart to understand them — routers, computers, software, networks. That was over a decade ago, and I've never stopped building since.
                 </p>
                 <p>
-                  Beyond the technical, I'm passionate about Africa's tech ecosystem. I co-founded Terra Talent to connect African professionals with global opportunities, and I lead the Absurd Geeks community to foster innovation among young developers.
+                  Today, with over a decade of experience, I build websites, mobile apps, and network applications. I do security auditing and monitoring, and I have strong knowledge of cloud-based solutions and deployments. I build enterprise-grade security labs with Kali Linux and Metasploit, deploy 7-server Linux infrastructures, design NoSQL databases using 4 paradigms simultaneously, and program autonomous robots with Arduino. I also work with tools like Webflow for rapid web design and deployment.
                 </p>
                 <p>
-                  When I'm not coding, you'll find me playing chess, watching football, gaming, or taking on CTF challenges. I believe in continuous learning, building in public, and creating technology that makes a real difference.
+                  I've interned at CAMTEL (Cameroon Telecommunications), co-founded Terra Talent and Terra Crowd Fund, and was selected for the U.S. Embassy's entrepreneurship accelerator.
                 </p>
                 <p>
-                  My goal is simple: to bridge the gap between infrastructure and software, to build secure and scalable systems, and to prove that world-class tech can come from anywhere — including Cameroon.
+                  Beyond tech, I was recognized with the Red Feather Award 2017 — Best Child Actor in Cameroon. I've served as a Yale Model African Union delegate, won a gold medal in a soccer tournament, and placed in the top 15% of the International Youth Math Challenge.
+                </p>
+                <p>
+                  I represent my fellow students as FETUC Representative at SUP'PTIC and UNIFAC Representative. I believe in building communities, not just code. That's why I founded Absurd Geeks — a tech community for curiosity-driven builders.
+                </p>
+                <p>
+                  I'm currently mastering React, TypeScript, Tailwind CSS, Laravel, and Next.js — adding modern web development to my already deep skillset in networking, cybersecurity, and infrastructure.
+                </p>
+                <p>
+                  If you're looking for a network engineer, developer, security auditor, or someone who can do it all — I'm the one for you.
                 </p>
               </div>
             </div>
