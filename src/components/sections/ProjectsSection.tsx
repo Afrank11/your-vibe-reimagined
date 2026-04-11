@@ -5,26 +5,26 @@ import { ExternalLink, Github } from 'lucide-react';
 const projects = [
   {
     title: "Cybersecurity Virtual Security Lab",
-    description: "Enterprise-grade virtual security lab with pfSense firewall, Kali Linux, Metasploitable, and Security Onion for penetration testing and network defense simulation.",
-    tags: ["Kali Linux", "pfSense", "Security Onion", "Metasploitable", "VirtualBox"],
+    description: "Multi-OS security lab with MikroTik, Wazuh, Zabbix, and Metasploit for penetration testing across two subnetworks.",
+    tags: ["Kali Linux", "MikroTik", "Wazuh", "Metasploit", "VirtualBox"],
     color: "from-red-500/20 to-orange-500/20",
   },
   {
     title: "Linux Enterprise Infrastructure",
-    description: "7-server Linux infrastructure with DNS, DHCP, HTTP, FTP, NFS, Samba, and SSH services on Ubuntu and CentOS — complete enterprise network simulation.",
-    tags: ["Linux", "Ubuntu", "CentOS", "DNS", "DHCP", "Apache", "SSH"],
+    description: "7-server Linux infrastructure with DHCP, DNS, Apache, Postfix, NFS, SSH, and Samba with Active Directory.",
+    tags: ["Linux", "Ubuntu", "DNS", "DHCP", "Apache", "SSH"],
     color: "from-green-500/20 to-emerald-500/20",
   },
   {
     title: "NoSQL Social Media Database",
-    description: "Multi-paradigm NoSQL database system implementing document (MongoDB), key-value (Redis), column-family (Cassandra), and graph (Neo4j) databases.",
-    tags: ["MongoDB", "Redis", "Cassandra", "Neo4j", "Python"],
+    description: "4-paradigm NoSQL database: MongoDB, Cassandra, Redis, and Neo4j. Flask/FastAPI frontend. Dockerized.",
+    tags: ["MongoDB", "Redis", "Cassandra", "Neo4j", "Docker"],
     color: "from-blue-500/20 to-cyan-500/20",
   },
   {
     title: "Autonomous Parking Robot",
-    description: "Autonomous parking robot using computer vision and machine learning for real-time parking space detection and automated vehicle positioning.",
-    tags: ["Python", "OpenCV", "TensorFlow", "Arduino", "Computer Vision"],
+    description: "Physical robot that autonomously detects parking spaces with ultrasonic sensors and executes parking maneuvers.",
+    tags: ["Arduino", "C++", "Ultrasonic Sensors", "L298N"],
     color: "from-purple-500/20 to-pink-500/20",
   },
 ];
@@ -59,11 +59,8 @@ const ProjectsSection = () => (
               ))}
             </div>
             <div className="flex gap-3">
-              <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+              <a href="https://github.com/Afrank11" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
                 <Github size={18} />
-              </a>
-              <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                <ExternalLink size={18} />
               </a>
             </div>
           </motion.div>
