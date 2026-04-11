@@ -48,7 +48,7 @@ const About = () => {
           </div>
         </AnimatedSection>
 
-        <AnimatedSection delay={0.2}>
+       <AnimatedSection delay={0.2}>
           <div className="prose prose-invert max-w-none space-y-6">
             <div className="bg-card border border-border rounded-xl p-8">
               <h2 className="text-2xl font-bold mb-6 text-center">
@@ -56,31 +56,43 @@ const About = () => {
               </h2>
               <div className="space-y-4 text-muted-foreground text-sm leading-relaxed">
                 <p>
-                  I'm Ateh Frank Ateh, a future Ingénieur Informatique et Réseaux (Computer Networks & Software Engineering) studying at SUP'PTIC, Yaoundé, Cameroon.
+                  I'm Ateh Frank Ateh, a computer networks and software engineering student at SUP'PTIC in Yaoundé, Cameroon. I'm a developer, systems builder, and someone deeply fascinated by how technology works beneath the surface.
                 </p>
                 <p>
-                  I'm a developer, vibe coder, and entrepreneur. A vibe coder is someone who builds with instinct, curiosity, and energy — not just following tutorials but actually feeling and understanding systems deeply. I don't just write code; I feel the architecture, debug by intuition, and ship things that shouldn't work but somehow do.
+                  My journey with computers didn't begin in a classroom. It started with curiosity — and a small family problem.
                 </p>
                 <p>
-                  My journey started when my sister blocked my phone when I was 14. Everyone said it was dead. I said "let me try." That moment changed everything. From that point, I became the kid who took things apart to understand them — routers, computers, software, networks. That was over a decade ago, and I've never stopped building since.
+                  When I was younger, my little sister accidentally locked an Android phone after entering the wrong password too many times. Everyone around me assumed the phone was finished. I wasn't so sure. I decided to try fixing it myself.
                 </p>
                 <p>
-                  Today, with over a decade of experience, I build websites, mobile apps, and network applications. I do security auditing and monitoring, and I have strong knowledge of cloud-based solutions and deployments. I build enterprise-grade security labs with Kali Linux and Metasploit, deploy 7-server Linux infrastructures, design NoSQL databases using 4 paradigms simultaneously, and program autonomous robots with Arduino. I also work with tools like Webflow for rapid web design and deployment.
+                  I didn't know exactly what I was doing at the time. I spent weeks researching, experimenting, breaking things and starting again. It took months of trial and error, but eventually I figured out how to factory reset the device and bring it back to life.
                 </p>
                 <p>
-                  I've interned at CAMTEL (Cameroon Telecommunications), co-founded Terra Talent and Terra Crowd Fund, and was selected for the U.S. Embassy's entrepreneurship accelerator.
+                  The feeling I had when that phone finally booted up again is something I've never forgotten. That moment changed everything.
                 </p>
                 <p>
-                  Beyond tech, I was recognized with the Red Feather Award 2017 — Best Child Actor in Cameroon. I've served as a Yale Model African Union delegate, won a gold medal in a soccer tournament, and placed in the top 15% of the International Youth Math Challenge.
+                  From that day on, I became the person who wanted to understand how things worked — not just how to use them. I started exploring computers, networks, and software. I learned to code, experimented with systems, and slowly began building projects of my own.
                 </p>
                 <p>
-                  I represent my fellow students as FETUC Representative at SUP'PTIC and UNIFAC Representative. I believe in building communities, not just code. That's why I founded Absurd Geeks — a tech community for curiosity-driven builders.
+                  Over the years I moved from simple programming experiments to building real systems. I've developed web and mobile applications, deployed cloud environments, designed complex databases, and built full network infrastructures in virtual labs. I've worked on cybersecurity environments using tools like Kali Linux and Metasploit, deployed monitoring systems such as Wazuh and Zabbix, and configured multi-server Linux environments providing services like DNS, DHCP, Apache, and mail.
                 </p>
                 <p>
-                  I'm currently mastering React, TypeScript, Tailwind CSS, Laravel, and Next.js — adding modern web development to my already deep skillset in networking, cybersecurity, and infrastructure.
+                  I've also built autonomous robotics projects using Arduino, designed NoSQL database architectures across multiple paradigms, and deployed cloud infrastructure using OpenStack.
                 </p>
                 <p>
-                  If you're looking for a network engineer, developer, security auditor, or someone who can do it all — I'm the one for you.
+                  But beyond the tools and technologies, what really drives me is the process of building and understanding systems deeply. I often describe myself as a vibe coder — someone who builds through intuition, curiosity, and experimentation. I don't just write code; I feel the architecture, debug by intuition, and ship things that shouldn't work but somehow do.
+                </p>
+                <p>
+                  Along the way I've had the opportunity to work beyond just personal projects. I interned at Cameroon Telecommunications, where I gained exposure to real telecommunications infrastructure and enterprise environments. I've co-founded projects like Terra Talent and Terra Crowd Fund, initiatives focused on empowering talent and supporting communities through technology.
+                </p>
+                <p>
+                  Outside of engineering, my journey has taken me into many different spaces. I was honored with the Red Feather Award for Best Child Actor in Cameroon, represented students in leadership forums like UNIFAC and FETUC, and participated in international programs such as the Yale Model African Union through Open Dreams. Those experiences shaped how I see technology: not just as code, but as a tool for building systems, communities, and opportunities.
+                </p>
+                <p>
+                  Today, I continue expanding my skills across software engineering, networking, cybersecurity, and cloud infrastructure, while mastering modern development tools like React, TypeScript, Tailwind CSS, and Next.js.
+                </p>
+                <p>
+                  I'm always building, always experimenting, and always looking for the next problem worth solving.
                 </p>
               </div>
             </div>
