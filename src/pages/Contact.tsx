@@ -23,9 +23,9 @@ const Contact = () => {
 
         <div className="grid md:grid-cols-3 gap-4 mb-12">
           {[
-            { icon: <Mail size={20} />, label: "Email", value: "atehfrankateh@gmail.com", href: "mailto:atehfrankateh@gmail.com" },
-            { icon: <Github size={20} />, label: "GitHub", value: "FrankAteh", href: "https://github.com/FrankAteh" },
-            { icon: <Linkedin size={20} />, label: "LinkedIn", value: "ateh-frank-ateh", href: "https://linkedin.com/in/ateh-frank-ateh" },
+            { icon: <Mail size={20} />, label: "Email", value: "atehfrank11@gmail.com", href: "mailto:atehfrank11@gmail.com" },
+            { icon: <Github size={20} />, label: "GitHub", value: "Afrank11", href: "https://github.com/Afrank11" },
+            { icon: <Linkedin size={20} />, label: "LinkedIn", value: "Ateh Frank Ateh", href: "https://linkedin.com/in/frank-ateh-ateh-98760321a" },
           ].map(c => (
             <a
               key={c.label}
