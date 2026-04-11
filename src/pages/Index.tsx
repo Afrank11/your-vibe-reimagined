@@ -1,16 +1,43 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import HeroSection from '@/components/sections/HeroSection';
+import AboutSection from '@/components/sections/AboutSection';
+import SkillsSection from '@/components/sections/SkillsSection';
+import ExperienceNumbers from '@/components/sections/ExperienceNumbers';
+import ProjectsSection from '@/components/sections/ProjectsSection';
+import NowDoingSection from '@/components/sections/NowDoingSection';
+import {
+  EducationSection,
+  ImpactSection,
+  AccomplishmentsSection,
+  CaseStudiesSection,
+  BlogsSection,
+  GitHubSection,
+  BeyondTerminalSection,
+  GuestbookCTA,
+  MarqueeTicker,
+  CTASection,
+} from '@/components/sections/OtherSections';
 
-// IMPORTANT: Fully REPLACE this with your own code
-const PlaceholderIndex = () => {
-  // PLACEHOLDER: Replace this entire return statement with the user's app.
-  // The inline background color is intentionally not part of the design system.
+const Index = () => {
   return (
-    <div className="flex min-h-screen items-center justify-center" style={{ backgroundColor: '#fcfbf8' }}>
-      <img data-lovable-blank-page-placeholder="REMOVE_THIS" src="/placeholder.svg" alt="Your app will live here!" />
+    <div className="relative">
+      <HeroSection />
+      <AboutSection />
+      <SkillsSection />
+      <ExperienceNumbers />
+      <ProjectsSection />
+      <NowDoingSection />
+      <EducationSection />
+      <ImpactSection />
+      <AccomplishmentsSection />
+      <CaseStudiesSection />
+      <BlogsSection />
+      <GitHubSection />
+      <BeyondTerminalSection />
+      <GuestbookCTA />
+      <MarqueeTicker />
+      <CTASection />
     </div>
   );
 };
-
-const Index = PlaceholderIndex;
 
 export default Index;
