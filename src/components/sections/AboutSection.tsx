@@ -46,8 +46,8 @@ const AboutSection = () => {
               </div>
             </div>
             <p className="text-muted-foreground mb-4 text-sm leading-relaxed">
-              I'm Ateh Frank Ateh — a future Ingénieur Informatique et Réseaux studying at SUP'PTIC, Yaoundé, Cameroon. 
-              I'm a developer, vibe coder, and entrepreneur. A vibe coder is someone who builds with instinct, curiosity, 
+              I'm Ateh Frank Ateh, a computer networks and software engineering student at SUP'PTIC in Yaoundé, Cameroon. 
+              I'm a developer, vibe coder, and entrepreneur. I build with instinct, curiosity, 
               and energy — not just following tutorials but actually feeling and understanding systems deeply.
             </p>
             <p className="text-muted-foreground mb-6 text-sm leading-relaxed">
