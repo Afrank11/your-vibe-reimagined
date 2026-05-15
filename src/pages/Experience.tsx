@@ -36,6 +36,7 @@ const timeline = [
 
 const Experience = () => (
   <div className="pt-24 md:pt-20 pb-20 px-4 relative z-10 min-h-screen">
+    <SEO title="Experience — Ateh Frank Ateh | CAMTEL, Terra Talent & more" description="Career timeline of Ateh Frank Ateh — Network Engineer at CAMTEL, Co-Founder of Terra Talent, and builder of multiple African tech ventures." path="/experience" />
     <div className="container mx-auto max-w-4xl">
       <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-12">
         <h1 className="text-4xl md:text-5xl font-bold mb-4">

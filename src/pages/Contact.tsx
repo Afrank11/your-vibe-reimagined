@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
+import SEO from '@/components/SEO';
 import { Mail, Send, Github, Linkedin, Twitter } from 'lucide-react';
 
 const Contact = () => {
