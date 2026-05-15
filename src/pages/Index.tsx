@@ -21,6 +21,7 @@ import {
 const Index = () => {
   return (
     <div className="relative">
+      <SEO title="Ateh Frank Ateh — Network Engineer & Software Engineer | Cameroon" description="Official portfolio of Ateh Frank Ateh (Frank Ateh, Ateh Frank Jr) — Network Engineer, Software Engineer & Cybersecurity builder. SUP'PTIC graduate, CAMTEL, 19+ projects." path="/" type="profile" />
       <HeroSection />
       <AboutSection />
       <SkillsSection />
