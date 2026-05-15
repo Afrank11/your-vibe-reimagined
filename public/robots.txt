@@ -1,4 +1,11 @@
 User-agent: *
 Allow: /
 
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
 Sitemap: https://atehfrank-vibe-folio.lovable.app/sitemap.xml
+Host: https://atehfrank-vibe-folio.lovable.app
