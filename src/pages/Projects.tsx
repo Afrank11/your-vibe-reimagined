@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import AnimatedSection from '@/components/AnimatedSection';
+import SEO from '@/components/SEO';
 import { ExternalLink, Github } from 'lucide-react';
 
 const allProjects = [
