@@ -141,6 +141,7 @@ const allProjects = [
 
 const Projects = () => (
   <div className="pt-24 md:pt-20 pb-20 px-4 relative z-10 min-h-screen">
+    <SEO title="Projects — Ateh Frank Ateh | Network, Security & Software Portfolio" description="19+ projects by Ateh Frank Ateh — cybersecurity labs, Linux infrastructure, NoSQL databases, autonomous robotics, and full-stack apps." path="/projects" />
     <div className="container mx-auto max-w-5xl">
       <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-12">
         <h1 className="text-4xl md:text-5xl font-bold mb-4">
