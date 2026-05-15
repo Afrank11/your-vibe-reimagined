@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import AnimatedSection from '@/components/AnimatedSection';
+import SEO from '@/components/SEO';
 import { MessageSquare } from 'lucide-react';
 
 const sampleMessages = [
@@ -24,6 +25,7 @@ const Guestbook = () => {
 
   return (
     <div className="pt-24 md:pt-20 pb-20 px-4 relative z-10 min-h-screen">
+      <SEO title="Guestbook — Ateh Frank Ateh" description="Sign the guestbook of Ateh Frank Ateh and leave a message." path="/guestbook" />
       <div className="container mx-auto max-w-3xl">
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-12">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">

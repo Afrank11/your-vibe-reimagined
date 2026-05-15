@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
+import SEO from '@/components/SEO';
 import { Mail, Send, Github, Linkedin, Twitter } from 'lucide-react';
 
 const Contact = () => {
@@ -13,6 +14,7 @@ const Contact = () => {
 
   return (
     <div className="pt-24 md:pt-20 pb-20 px-4 relative z-10 min-h-screen">
+      <SEO title="Contact Ateh Frank Ateh — Hire a Network & Software Engineer" description="Get in touch with Ateh Frank Ateh for collaboration, hiring, or consulting on networking, cybersecurity and software projects." path="/contact" />
       <div className="container mx-auto max-w-3xl">
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-12">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">
