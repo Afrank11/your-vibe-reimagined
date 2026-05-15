@@ -29,6 +29,7 @@ const posts = [
 
 const Blog = () => (
   <div className="pt-24 md:pt-20 pb-20 px-4 relative z-10 min-h-screen">
+    <SEO title="Blog & Insights — Ateh Frank Ateh" description="Articles by Ateh Frank Ateh on OpenStack private clouds, enterprise security labs, African tech, networking and software engineering." path="/blog" />
     <div className="container mx-auto max-w-4xl">
       <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-12">
         <h1 className="text-4xl md:text-5xl font-bold mb-4">
