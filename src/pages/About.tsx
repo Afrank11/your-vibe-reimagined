@@ -1,10 +1,12 @@
 import { motion } from 'framer-motion';
 import AnimatedSection from '@/components/AnimatedSection';
+import SEO from '@/components/SEO';
 import profileImg from '@/assets/Ateh.jpg';
 
 const About = () => {
   return (
     <div className="pt-24 md:pt-20 pb-20 px-4 relative z-10 min-h-screen">
+      <SEO title="About Ateh Frank Ateh — Network & Software Engineer from Cameroon" description="Learn about Ateh Frank Ateh (Frank Ateh, Ateh Frank Jr) — SUP'PTIC graduate, Network Engineer, Software Engineer and Cybersecurity builder from Cameroon." path="/about" type="profile" />
       <div className="container mx-auto max-w-4xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
