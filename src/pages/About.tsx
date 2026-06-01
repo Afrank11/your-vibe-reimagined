@@ -1,101 +1,82 @@
 import { motion } from 'framer-motion';
 import AnimatedSection from '@/components/AnimatedSection';
 import SEO from '@/components/SEO';
+import { useLanguage } from '@/components/LanguageProvider';
+import { Briefcase, GraduationCap, MapPin, Rocket, Shield, Terminal } from 'lucide-react';
 import profileImg from '@/assets/Ateh.jpg';
 
+const story = {
+  en: [
+    "I'm Ateh Frank Ateh, a full-stack developer and computer networks engineering student at SUP'PTIC in Yaounde, Cameroon. I build web platforms, mobile apps, APIs, payment flows, network labs, and infrastructure projects.",
+    "My curiosity started early, after fixing a locked Android phone through weeks of research, trial, and error. That moment taught me to look beneath the surface of technology and understand systems deeply.",
+    "Since then, I have built school management platforms, Android apps, AI-assisted learning tools, multi-server Linux environments, OpenStack cloud deployments, NoSQL systems, cybersecurity labs, and client websites.",
+    "Professionally, I have worked on Zenorva Support's web presence, Terra Talent Hub's skills verification platform, CAMTEL production IP networks, Dewise Energy's website, and Cam e-guide / Skolarr's education platform.",
+    "I describe myself as a vibe coder because I build with instinct, speed, and experimentation, but I pair that energy with careful engineering: clean interfaces, practical architecture, security awareness, and reliable deployment.",
+    "Beyond code, I care about building communities and opportunities from Africa. I founded Absurd Geeks, contributed to student representation initiatives, and keep learning across software, networks, cybersecurity, and cloud infrastructure.",
+  ],
+  fr: [
+    "Je suis Ateh Frank Ateh, developpeur full-stack et etudiant ingenieur en reseaux informatiques a SUP'PTIC, Yaounde. Je construis des plateformes web, applications mobiles, API, systemes de paiement, labs reseau et projets d'infrastructure.",
+    "Ma curiosite a commence tres tot, apres avoir repare un telephone Android bloque grace a des semaines de recherche, d'essais et d'erreurs. Cette experience m'a appris a comprendre la technologie en profondeur.",
+    "Depuis, j'ai realise des plateformes de gestion scolaire, applications Android, outils d'apprentissage avec IA, environnements Linux multi-serveurs, deploiements cloud OpenStack, systemes NoSQL, labs cybersecurite et sites clients.",
+    "Professionnellement, j'ai travaille sur la presence web de Zenorva Support, la plateforme Terra Talent Hub, les reseaux IP de production de CAMTEL, le site Dewise Energy et la plateforme educative Cam e-guide / Skolarr.",
+    "Je me decris comme vibe coder parce que je construis avec instinct, vitesse et experimentation, tout en gardant une base d'ingenierie solide : interfaces propres, architecture pratique, securite et deploiement fiable.",
+    "Au-dela du code, je veux creer des communautes et des opportunites depuis l'Afrique. J'ai fonde Absurd Geeks, participe a des initiatives de representation et je continue d'apprendre en logiciel, reseaux, cybersecurite et cloud.",
+  ],
+};
+
 const About = () => {
+  const { language, t } = useLanguage();
+
+  const facts = [
+    { icon: <MapPin size={18} />, label: t('Location', 'Localisation'), value: t('Yaounde, Cameroon', 'Yaounde, Cameroun') },
+    { icon: <GraduationCap size={18} />, label: t('Education', 'Formation'), value: "SUP'PTIC - Computer Networks & Software Engineering" },
+    { icon: <Terminal size={18} />, label: t('Focus', 'Specialite'), value: t('Full-Stack Developer, Network Engineer, Vibe Coder', 'Developpeur Full-Stack, Ingenieur Reseaux, Vibe Coder') },
+    { icon: <Rocket size={18} />, label: t('Mission', 'Mission'), value: t('Building impactful tech from Africa', "Construire une tech utile depuis l'Afrique") },
+    { icon: <Shield size={18} />, label: t('Passion', 'Passion'), value: t('Cybersecurity & Network Defense', 'Cybersecurite & defense reseau') },
+    { icon: <Briefcase size={18} />, label: t('Status', 'Statut'), value: t('Available for collaboration', 'Disponible pour collaboration') },
+  ];
+
   return (
     <div className="pt-24 md:pt-20 pb-20 px-4 relative z-10 min-h-screen">
-      <SEO title="About Ateh Frank Ateh — Network & Software Engineer from Cameroon" description="Learn about Ateh Frank Ateh (Frank Ateh, Ateh Frank Jr) — SUP'PTIC graduate, Network Engineer, Software Engineer and Cybersecurity builder from Cameroon." path="/about" type="profile" />
+      <SEO title="About Ateh Frank Ateh - Network & Software Engineer from Cameroon" description="Learn about Ateh Frank Ateh: full-stack developer, network engineer, cybersecurity builder, and SUP'PTIC student from Cameroon." path="/about" type="profile" />
       <div className="container mx-auto max-w-4xl">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="text-center mb-12"
-        >
+        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-12">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">
-            About <span className="text-primary text-glow">Me</span>
+            {t('About', 'A propos de')} <span className="text-primary text-glow">{t('Me', 'moi')}</span>
           </h1>
           <p className="font-mono-game text-muted-foreground text-sm">&gt; cat ~/about.md</p>
         </motion.div>
 
         <AnimatedSection className="mb-12">
           <div className="flex justify-center mb-8">
-            <img
-              src={profileImg}
-              alt="Ateh Frank Ateh"
-              className="w-64 h-64 md:w-80 md:h-80 rounded-2xl object-cover border-2 border-primary/30 box-glow"
-            />
+            <img src={profileImg} alt="Ateh Frank Ateh" className="w-64 h-64 md:w-80 md:h-80 rounded-2xl object-cover border-2 border-primary/30 box-glow" />
           </div>
         </AnimatedSection>
 
         <AnimatedSection delay={0.1}>
           <div className="grid sm:grid-cols-2 gap-4 mb-12">
-            {[
-              { icon: "📍", label: "Location", value: "Yaoundé, Cameroon" },
-              { icon: "🎓", label: "Education", value: "SUP'PTIC — Computer Networks & Software Engineering" },
-              { icon: "💻", label: "Focus", value: "Developer, Vibe Coder & Entrepreneur" },
-              { icon: "🌍", label: "Mission", value: "Building impactful tech from Africa" },
-              { icon: "🔒", label: "Passion", value: "Cybersecurity & Network Defense" },
-              { icon: "🚀", label: "Status", value: "Available for collaboration" },
-            ].map(f => (
-              <div key={f.label} className="flex items-center gap-3 bg-card border border-border rounded-lg p-4 font-mono-game text-sm">
-                <span>{f.icon}</span>
+            {facts.map(fact => (
+              <div key={fact.label} className="flex items-center gap-3 bg-card border border-border rounded-lg p-4 font-mono-game text-sm">
+                <span className="text-primary">{fact.icon}</span>
                 <div>
-                  <span className="text-primary text-xs">{f.label}</span>
-                  <p className="text-muted-foreground">{f.value}</p>
+                  <span className="text-primary text-xs">{fact.label}</span>
+                  <p className="text-muted-foreground">{fact.value}</p>
                 </div>
               </div>
             ))}
           </div>
         </AnimatedSection>
 
-       <AnimatedSection delay={0.2}>
+        <AnimatedSection delay={0.2}>
           <div className="prose prose-invert max-w-none space-y-6">
             <div className="bg-card border border-border rounded-xl p-8">
               <h2 className="text-2xl font-bold mb-6 text-center">
-                My <span className="text-primary">Story</span>
+                {t('My', 'Mon')} <span className="text-primary">{t('Story', 'histoire')}</span>
               </h2>
               <div className="space-y-4 text-muted-foreground text-sm leading-relaxed">
-                <p>
-                  I'm Ateh Frank Ateh, a computer networks and software engineering student at SUP'PTIC in Yaoundé, Cameroon. I'm a developer, systems builder, and someone deeply fascinated by how technology works beneath the surface.
-                </p>
-                <p>
-                  My journey with computers didn't begin in a classroom. It started with curiosity — and a small family problem.
-                </p>
-                <p>
-                  When I was younger, my little sister accidentally locked an Android phone after entering the wrong password too many times. Everyone around me assumed the phone was finished. I wasn't so sure. I decided to try fixing it myself.
-                </p>
-                <p>
-                  I didn't know exactly what I was doing at the time. I spent weeks researching, experimenting, breaking things and starting again. It took months of trial and error, but eventually I figured out how to factory reset the device and bring it back to life.
-                </p>
-                <p>
-                  The feeling I had when that phone finally booted up again is something I've never forgotten. That moment changed everything.
-                </p>
-                <p>
-                  From that day on, I became the person who wanted to understand how things worked — not just how to use them. I started exploring computers, networks, and software. I learned to code, experimented with systems, and slowly began building projects of my own.
-                </p>
-                <p>
-                  Over the years I moved from simple programming experiments to building real systems. I've developed web and mobile applications, deployed cloud environments, designed complex databases, and built full network infrastructures in virtual labs. I've worked on cybersecurity environments using tools like Kali Linux and Metasploit, deployed monitoring systems such as Wazuh and Zabbix, and configured multi-server Linux environments providing services like DNS, DHCP, Apache, and mail.
-                </p>
-                <p>
-                  I've also built autonomous robotics projects using Arduino, designed NoSQL database architectures across multiple paradigms, and deployed cloud infrastructure using OpenStack.
-                </p>
-                <p>
-                  But beyond the tools and technologies, what really drives me is the process of building and understanding systems deeply. I often describe myself as a vibe coder — someone who builds through intuition, curiosity, and experimentation. I don't just write code; I feel the architecture, debug by intuition, and ship things that shouldn't work but somehow do.
-                </p>
-                <p>
-                  Along the way I've had the opportunity to work beyond just personal projects. I interned at Cameroon Telecommunications, where I gained exposure to real telecommunications infrastructure and enterprise environments. I've co-founded projects like Terra Talent and Terra Crowd Fund, initiatives focused on empowering talent and supporting communities through technology.
-                </p>
-                <p>
-                  Outside of engineering, my journey has taken me into many different spaces. I was honored with the Red Feather Award for Best Child Actor in Cameroon, represented students in leadership forums like UNIFAC and FETUC, and participated in international programs such as the Yale Model African Union through Open Dreams. Those experiences shaped how I see technology: not just as code, but as a tool for building systems, communities, and opportunities.
-                </p>
-                <p>
-                  Today, I continue expanding my skills across software engineering, networking, cybersecurity, and cloud infrastructure, while mastering modern development tools like React, TypeScript, Tailwind CSS, and Next.js.
-                </p>
-                <p>
-                  I'm always building, always experimenting, and always looking for the next problem worth solving.
-                </p>
+                {story[language].map(paragraph => (
+                  <p key={paragraph}>{paragraph}</p>
+                ))}
               </div>
             </div>
           </div>
