@@ -17,8 +17,9 @@ const Contact = () => {
 
   const contactCards = [
     { icon: <Mail size={20} />, label: t('Email', 'Email'), value: contactInfo.email, href: `mailto:${contactInfo.email}` },
-    { icon: <Phone size={20} />, label: t('Phone', 'Telephone'), value: contactInfo.phonePrimary, href: `tel:${contactInfo.phonePrimary.replace(/\s/g, '')}` },
-    { icon: <MessageCircle size={20} />, label: 'WhatsApp', value: contactInfo.phoneSecondary, href: contactInfo.whatsappSecondary },
+    { icon: <Phone size={20} />, label: t('Phone', 'Telephone'), value: contactInfo.phoneSecondary, href: `tel:${contactInfo.phoneSecondary.replace(/\s/g, '')}` },
+    { icon: <MessageCircle size={20} />, label: 'WhatsApp 1', value: contactInfo.phonePrimary, href: contactInfo.whatsappPrimary },
+    { icon: <MessageCircle size={20} />, label: 'WhatsApp 2', value: contactInfo.phoneSecondary, href: contactInfo.whatsappSecondary },
     { icon: <Github size={20} />, label: 'GitHub', value: 'Afrank11', href: contactInfo.github },
     { icon: <Linkedin size={20} />, label: 'LinkedIn', value: 'Ateh Frank Ateh', href: contactInfo.linkedin },
   ];

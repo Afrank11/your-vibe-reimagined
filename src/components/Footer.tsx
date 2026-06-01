@@ -18,10 +18,13 @@ const Footer = () => {
           <a href={`mailto:${contactInfo.email}`} className="text-muted-foreground hover:text-primary transition-colors">
             <Mail size={20} />
           </a>
-          <a href={`tel:${contactInfo.phonePrimary.replace(/\s/g, '')}`} className="text-muted-foreground hover:text-primary transition-colors">
+          <a href={`tel:${contactInfo.phoneSecondary.replace(/\s/g, '')}`} className="text-muted-foreground hover:text-primary transition-colors">
             <Phone size={20} />
           </a>
           <a href={contactInfo.whatsappPrimary} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
+            <MessageCircle size={20} />
+          </a>
+          <a href={contactInfo.whatsappSecondary} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
             <MessageCircle size={20} />
           </a>
         </div>

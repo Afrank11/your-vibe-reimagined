@@ -143,10 +143,12 @@ export const BlogsSection = () => {
         <p className="text-muted-foreground text-center mb-12 font-mono-game text-sm">&gt; cat blog/latest</p>
         <div className="grid md:grid-cols-3 gap-6">
           {[t('OpenStack private cloud infrastructure', 'Infrastructure cloud prive OpenStack'), t('Enterprise security lab build', 'Construction d un lab cybersecurite'), t('The future of African tech', 'Le futur de la tech africaine')].map((title, i) => (
-            <motion.div key={title} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="bg-card border border-border rounded-xl p-6 hover:border-primary/30 transition-all group">
+            <motion.div key={title} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}>
+            <Link to="/blog" className="block bg-card border border-border rounded-xl p-6 hover:border-primary/30 transition-all group">
               <BookOpen size={20} className="text-primary mb-3" />
               <h3 className="font-bold text-sm mb-2 group-hover:text-primary transition-colors">{title}</h3>
               <p className="text-muted-foreground text-xs">{t('Short technical notes from my engineering journey.', 'Notes techniques courtes issues de mon parcours.')}</p>
+            </Link>
             </motion.div>
           ))}
         </div>
@@ -163,12 +165,12 @@ export const GitHubSection = () => {
     <AnimatedSection className="py-20 px-4 relative z-10">
       <div className="container mx-auto max-w-5xl">
         {sectionTitle('GitHub', t('Activity', 'Activite'))}
-        <p className="text-muted-foreground text-center mb-12 font-mono-game text-sm"><a href={contactInfo.github} target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">&gt; github.com/Afrank11</a></p>
+        <p className="text-muted-foreground text-center mb-12 font-mono-game text-sm"><a href={contactInfo.githubRepos} target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">&gt; github.com/Afrank11?tab=repositories</a></p>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {repos.map((repo, i) => (
-            <motion.a key={repo} href={`${contactInfo.github}${repo}`} target="_blank" rel="noopener noreferrer" initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }} className="bg-card border border-border rounded-lg p-4 hover:border-primary/30 transition-all hover:scale-[1.02]">
+            <motion.a key={repo} href={contactInfo.githubRepos} target="_blank" rel="noopener noreferrer" initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }} className="bg-card border border-border rounded-lg p-4 hover:border-primary/30 transition-all hover:scale-[1.02]">
               <div className="flex items-center gap-2 mb-2"><div className="w-3 h-3 rounded-full bg-primary" /><span className="font-mono-game text-sm text-primary">{repo}</span></div>
-              <p className="text-muted-foreground text-xs">{t('Public project or code reference from my GitHub profile.', 'Projet public ou reference de code sur mon profil GitHub.')}</p>
+              <p className="text-muted-foreground text-xs">{t('Open my GitHub profile to browse public repositories.', 'Ouvrir mon profil GitHub pour parcourir les depots publics.')}</p>
             </motion.a>
           ))}
         </div>

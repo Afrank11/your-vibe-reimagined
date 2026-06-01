@@ -5,6 +5,7 @@ export const contactInfo = {
   whatsappPrimary: "https://wa.me/237653667494",
   whatsappSecondary: "https://wa.me/237695298881",
   github: "https://github.com/Afrank11/",
+  githubRepos: "https://github.com/Afrank11?tab=repositories",
   linkedin: "https://linkedin.com/in/frank-ateh-ateh-98760321a",
   cv: "/Ateh_Frank_Ateh_CV.pdf",
 };
