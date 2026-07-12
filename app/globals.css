@@ -1,0 +1,123 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --ink: #070707;
+  --ink-2: #0d0d0d;
+  --ink-3: #161616;
+  --bone: #edece6;
+  --silver: #8f8f8a;
+  --smoke: #55554f;
+  --line: rgba(237, 236, 230, 0.1);
+  --brass: #c2a57b;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  html.lenis,
+  html.lenis body {
+    height: auto;
+  }
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+
+  body {
+    @apply bg-ink text-bone font-sans antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background: var(--brass);
+    color: var(--ink);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--brass);
+    outline-offset: 3px;
+  }
+
+  ::-webkit-scrollbar {
+    width: 4px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--ink);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--smoke);
+  }
+}
+
+@layer components {
+  /* Mono technical label — section indices, metadata */
+  .label-mono {
+    @apply font-mono text-[11px] uppercase tracking-[0.18em] text-silver;
+  }
+
+  /* Hairline rule */
+  .rule {
+    @apply border-t border-line;
+  }
+
+  /* Editorial italic accent inside display headlines */
+  .accent-serif {
+    @apply font-serif italic font-normal text-bone;
+    letter-spacing: -0.01em;
+  }
+
+  /* Display headline base */
+  .display {
+    @apply font-sans font-medium text-bone;
+    letter-spacing: -0.03em;
+    line-height: 1.02;
+  }
+
+  /* Underline-on-hover link */
+  .link-quiet {
+    position: relative;
+  }
+  .link-quiet::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    height: 1px;
+    width: 100%;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .link-quiet:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+}
+
+/* Masked-line reveal: lines start hidden below their clip until GSAP runs */
+.masked-line {
+  overflow: hidden;
+  display: block;
+}
+.masked-line > span {
+  display: block;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
