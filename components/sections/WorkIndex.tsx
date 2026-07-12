@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowUpRight } from "@/components/ui/Icons";
 import { EASE } from "@/lib/motion";
@@ -72,7 +73,7 @@ export function WorkIndex() {
                   <span className="font-mono text-[11px] uppercase tracking-[0.14em] text-smoke">
                     {project.group}
                   </span>
-                  {project.demo && (
+                  {("problem" in project || project.demo) && (
                     <ArrowUpRight className="mt-0.5 shrink-0 text-smoke transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-brass" />
                   )}
                 </span>
@@ -92,7 +93,11 @@ export function WorkIndex() {
                 }}
                 exit={{ opacity: 0, transition: { duration: 0.15 } }}
               >
-                {project.demo ? (
+                {"problem" in project ? (
+                  <Link href={`/work/${project.slug}`} className={`${rowClass} hover:bg-ink-2`}>
+                    {inner}
+                  </Link>
+                ) : project.demo ? (
                   <a
                     href={project.demo}
                     target="_blank"

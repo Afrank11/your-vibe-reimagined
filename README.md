@@ -19,7 +19,8 @@ npm run build   # production build (static)
 | `lib/data.ts` | **All content** — projects, case studies, experience, skills, testimonials. Edit copy here, not in components. |
 | `lib/seo.ts` | Site constants (canonical URL), JSON-LD schemas |
 | `lib/motion.ts` | Shared animation tokens (eases, durations) |
-| `app/` | Routes: `/` (8-section experience), `/work` (filterable index), generated `sitemap.ts` / `robots.ts` |
+| `app/` | Routes: `/` (8-section experience), `/work` (filterable index), `/work/[slug]` (case studies), `/notes` + `/notes/[slug]` (essays), generated `sitemap.ts` / `robots.ts` |
+| `lib/articles.ts` | Notes essays — add an object to publish (index, sitemap, and JSON-LD update automatically) |
 | `components/sections/` | One file per page section |
 | `components/motion/` | Reusable primitives: `MaskedLines`, `Reveal`, `Parallax`, `Magnetic` |
 | `components/layout/` | Header, Footer, Preloader, custom Cursor, Grain overlay |
@@ -29,7 +30,8 @@ npm run build   # production build (static)
 ## Common edits
 
 - **Add a testimonial**: push an object into `testimonials` in `lib/data.ts` — the Signals section renders it automatically.
-- **Add a project**: append to `archiveProjects` in `lib/data.ts` (appears on `/work` with filtering). To feature it on the home page, add it to `caseStudies` with `context/role/outcome/lesson`.
+- **Add a project**: append to `archiveProjects` in `lib/data.ts` (appears on `/work` with filtering). To feature it on the home page and give it a `/work/[slug]` case-study page, add it to `caseStudies` with the full narrative fields (`context/problem/role/decisions/challenges/result/lesson/year`).
+- **Publish an essay**: append to `articles` in `lib/articles.ts` — `/notes`, the article page, sitemap, and Article JSON-LD are generated from it.
 - **Change availability line**: `Hero.tsx` bottom strip + `facts` in `lib/data.ts`.
 
 ## Design & motion rules

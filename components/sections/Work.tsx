@@ -17,11 +17,14 @@ function MetaRow({ label, children }: { label: string; children: React.ReactNode
 function CasePanel({ project, flip }: { project: CaseStudy; flip: boolean }) {
   return (
     <article className="grid gap-8 md:grid-cols-12 md:gap-10">
-      {/* Visual panel: abstract typographic composition, parallax drift */}
+      {/* Visual panel: abstract typographic composition, parallax drift — doorway to the case study */}
       <Reveal
         className={`md:col-span-7 ${flip ? "md:order-2" : ""}`}
       >
-        <div className="group relative aspect-[4/3] overflow-hidden bg-ink-2 md:aspect-[16/11]">
+        <Link
+          href={`/work/${project.slug}`}
+          aria-label={`Read the ${project.title} case study`}
+          className="group relative block aspect-[4/3] overflow-hidden bg-ink-2 md:aspect-[16/11]">
           <Parallax speed={0.08} className="absolute inset-0">
             <div className="absolute inset-0 flex flex-col justify-between p-6 md:p-10">
               <div className="flex items-start justify-between">
@@ -49,7 +52,7 @@ function CasePanel({ project, flip }: { project: CaseStudy; flip: boolean }) {
           {/* corner ticks — technical-drawing framing */}
           <span aria-hidden className="absolute left-3 top-3 h-3 w-3 border-l border-t border-bone/20" />
           <span aria-hidden className="absolute bottom-3 right-3 h-3 w-3 border-b border-r border-bone/20" />
-        </div>
+        </Link>
       </Reveal>
 
       {/* Case-study meta */}
@@ -62,17 +65,26 @@ function CasePanel({ project, flip }: { project: CaseStudy; flip: boolean }) {
             <MetaRow label="Outcome">{project.outcome}</MetaRow>
             <MetaRow label="Lesson">{project.lesson}</MetaRow>
           </div>
-          {project.demo && (
-            <a
-              href={project.demo}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group/link mt-6 inline-flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.18em] text-bone"
+          <div className="mt-6 flex flex-wrap items-center gap-x-8 gap-y-3">
+            <Link
+              href={`/work/${project.slug}`}
+              className="group/link inline-flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.18em] text-brass"
             >
-              <span className="link-quiet">Visit live site</span>
+              <span className="link-quiet">Read case study</span>
               <ArrowUpRight className="transition-transform duration-300 group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5" />
-            </a>
-          )}
+            </Link>
+            {project.demo && (
+              <a
+                href={project.demo}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group/link inline-flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.18em] text-bone"
+              >
+                <span className="link-quiet">Visit live site</span>
+                <ArrowUpRight className="transition-transform duration-300 group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5" />
+              </a>
+            )}
+          </div>
         </div>
       </Reveal>
     </article>

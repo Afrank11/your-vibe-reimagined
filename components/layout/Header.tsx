@@ -73,9 +73,17 @@ export function Header() {
             </Link>
           ))}
           <Link
+            href="/notes"
+            className={`link-quiet label-mono transition-colors hover:!text-bone ${
+              pathname.startsWith("/notes") ? "!text-brass" : "!text-bone/70"
+            }`}
+          >
+            Notes
+          </Link>
+          <Link
             href="/work"
             className={`label-mono border border-line px-4 py-2.5 transition-colors hover:border-bone/40 ${
-              pathname === "/work" ? "!text-brass" : "!text-bone"
+              pathname.startsWith("/work") ? "!text-brass" : "!text-bone"
             }`}
           >
             Index
@@ -129,13 +137,22 @@ export function Header() {
                 </motion.li>
               ))}
             </ul>
-            <Link
-              href="/work"
-              onClick={() => setOpen(false)}
-              className="label-mono border border-line px-5 py-4 text-center !text-bone"
-            >
-              Full project index
-            </Link>
+            <div className="grid grid-cols-2 gap-3">
+              <Link
+                href="/work"
+                onClick={() => setOpen(false)}
+                className="label-mono border border-line px-5 py-4 text-center !text-bone"
+              >
+                Project index
+              </Link>
+              <Link
+                href="/notes"
+                onClick={() => setOpen(false)}
+                className="label-mono border border-line px-5 py-4 text-center !text-bone"
+              >
+                Notes
+              </Link>
+            </div>
           </motion.nav>
         )}
       </AnimatePresence>

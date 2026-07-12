@@ -40,10 +40,16 @@ export type Project = {
 
 export type CaseStudy = Project & {
   index: string;
+  year: string;
   context: string;
   role: string;
   outcome: string;
   lesson: string;
+  /** Detail-page narrative (/work/[slug]) */
+  problem: string;
+  decisions: { title: string; body: string }[];
+  challenges: string;
+  result: string;
 };
 
 export const caseStudies: CaseStudy[] = [
@@ -67,6 +73,31 @@ export const caseStudies: CaseStudy[] = [
       "A live platform where talents earn verifiable, QR-checked certificates and employers hire against evidence instead of claims.",
     lesson:
       "Trust is a product feature. Every design decision — from scoring to QR verification — had to make honesty the path of least resistance.",
+    year: "2024 — 2026",
+    problem:
+      "A certificate is a claim, and claims are cheap. For hiring to work, an employer standing in front of a candidate needs to confirm — in seconds — that an assessment really happened, what it measured, and how the candidate scored. Nothing in the local market offered that.",
+    decisions: [
+      {
+        title: "Standardized assessment over ad-hoc quizzes",
+        body: "Assessments were built on the DigComp framework so that scores mean the same thing across every talent — a shared scale employers can actually compare against, instead of homemade tests nobody can interpret.",
+      },
+      {
+        title: "Verification at the moment of doubt",
+        body: "Every certificate carries a QR code that resolves to its live record. The check happens exactly where trust is decided — in the interview, on a phone — not in an email thread days later.",
+      },
+      {
+        title: "Tiered payments to keep the door open",
+        body: "A tiered pricing model lets talents start free and pay as the value grows, keeping the platform accessible in a market where a hard paywall would exclude the people it exists for.",
+      },
+      {
+        title: "An employer-side product, not just talent profiles",
+        body: "Employers got their own dashboard — rankings, verified results, candidate evidence — because a verification platform only matters if the verifying side actually uses it.",
+      },
+    ],
+    challenges:
+      "The hard problems were adversarial: designing scoring that is difficult to game, keeping certificate verification instant and unforgeable, and wiring payment flows across tiers through a secure API backend — all while the product had to stay simple enough for first-time users.",
+    result:
+      "Terra Talent Hub is live at terratalenthub.com. Talents take standardized assessments, earn ranked, QR-verifiable certificates, and employers hire against evidence instead of claims.",
   },
   {
     slug: "coach-marcus",
@@ -88,6 +119,27 @@ export const caseStudies: CaseStudy[] = [
       "A fast, credible presence where every section moves a visitor one step closer to booking.",
     lesson:
       "For service businesses, the website is a salesperson. Hierarchy and pacing convert better than decoration.",
+    year: "2025",
+    problem:
+      "Coaches sell a transformation, but most coaching sites sell a list of workouts. Visitors arrive motivated, meet a wall of generic sections, and leave without booking. The brief was a site that carries a visitor from curiosity to commitment.",
+    decisions: [
+      {
+        title: "Narrative order before section order",
+        body: "The page is sequenced like a sales conversation — the transformation first, proof and programs after, contact exactly when conviction peaks — instead of the usual about/services/contact template.",
+      },
+      {
+        title: "One call to action, repeated with rhythm",
+        body: "Every section resolves toward the same booking action. No competing buttons, no newsletter detours — a single path, offered at each moment a visitor might be ready.",
+      },
+      {
+        title: "Speed as a credibility feature",
+        body: "Built lean on React and deployed on Vercel with a strict performance budget, because a slow site quietly tells a visitor the service will be sloppy too.",
+      },
+    ],
+    challenges:
+      "The tension was pacing: sales-driven sections push urgency while credibility needs calm. Getting the rhythm right — confident copy, restrained motion, fast loads on mobile connections — took more iterations than any component.",
+    result:
+      "A live demo that reads like a premium coaching brand: fast, credible, and structured so every scroll moves a visitor closer to booking.",
   },
   {
     slug: "cybersecurity-lab",
@@ -108,6 +160,27 @@ export const caseStudies: CaseStudy[] = [
       "A fully monitored environment where attacks are launched, detected, and analyzed end to end — offense and defense in one system.",
     lesson:
       "Detection is harder than intrusion. Building the defensive side taught me more than any exploit did.",
+    year: "2025",
+    problem:
+      "Security skills learned from slides don't survive contact with a real network. Practicing attack and defense requires infrastructure that behaves like production — routed, monitored, multi-OS — while staying safe to break. Public labs give you targets; they don't teach you to run the defense.",
+    decisions: [
+      {
+        title: "Two subnets, one MikroTik boundary",
+        body: "Attacker and defender networks were separated by MikroTik routing, so every attack had to cross a real network boundary — the same path it would take in production, visible to the same controls.",
+      },
+      {
+        title: "Detection as a first-class citizen",
+        body: "Wazuh (SIEM) and Zabbix (monitoring) were deployed before the first exploit was run. The point was never just to get in — it was to watch what getting in looks like from the defender's chair.",
+      },
+      {
+        title: "Multi-OS on purpose",
+        body: "Kali for offense, mixed targets for defense — because real environments are heterogeneous, and detection rules that only work on one OS are a false sense of security.",
+      },
+    ],
+    challenges:
+      "Tuning was the real work: detection rules that catch Metasploit activity without drowning in alert noise, and squeezing an entire monitored enterprise onto one host's worth of virtual machines without the lab collapsing under its own resource use.",
+    result:
+      "A complete attack-and-defense loop on my own infrastructure: launch an intrusion on one subnet, watch it surface in the SIEM on the other, and trace the kill chain end to end.",
   },
   {
     slug: "linux-infrastructure",
@@ -128,6 +201,27 @@ export const caseStudies: CaseStudy[] = [
       "A complete enterprise backbone where every service resolves, authenticates, and delivers to real clients on the network.",
     lesson:
       "Infrastructure rewards patience. When DNS, DHCP, and identity agree, everything above them becomes simple.",
+    year: "2024",
+    problem:
+      "A company's digital life rests on services nobody sees: naming, addressing, web, mail, files, identity. The challenge was to build that entire foundation from zero — seven interdependent servers — and prove it works not from the servers themselves, but from the clients that depend on them.",
+    decisions: [
+      {
+        title: "Dependency order, not checklist order",
+        body: "DNS and DHCP came first because everything else assumes they exist. Building in dependency order turned seven separate services into one coherent system instead of seven fragile islands.",
+      },
+      {
+        title: "Identity at the center",
+        body: "Samba with Active Directory carries authentication for the environment, so file access and services resolve against one source of truth rather than per-server accounts.",
+      },
+      {
+        title: "Client-side validation as the definition of done",
+        body: "No service counted as finished until a client VM on the VMware internal network could consume it — resolve the name, get the lease, load the site, send the mail, mount the share.",
+      },
+    ],
+    challenges:
+      "The difficulty was interdependence: mail delivery fails silently when DNS records are wrong, domain joins fail when name resolution and time drift disagree, and debugging seven services sharing one Ubuntu host means every fix risks disturbing a neighbor.",
+    result:
+      "A complete enterprise backbone — DHCP, DNS, Apache virtual hosting, Postfix, NFS, SSH, and Samba with AD — serving real client machines over an internal network, built and validated end to end.",
   },
 ];
 
@@ -338,15 +432,16 @@ export const projectGroups: ProjectGroup[] = [
 
 export const story = [
   "It started with a locked Android phone. Weeks of research, trial, and error — until it opened. That was the moment I learned to look beneath the surface of technology, and I never stopped.",
-  "Today I'm a telecommunications and ICT engineering student at SUP'PTIC in Yaoundé with a computer science background — which means I'm as comfortable inside a production IP network as I am inside a React codebase. I've built school platforms, Android apps, AI-assisted learning tools, seven-server Linux environments, OpenStack clouds, and cybersecurity labs designed to be attacked.",
-  "Professionally, I've shipped for real organizations: Terra Talent Hub's skills verification platform, CAMTEL's production networks, Zenorva Support's web presence, Dewise Energy, and the Cam e-guide education platform. I build with instinct and speed, but I pair that energy with careful engineering — clean interfaces, practical architecture, security awareness, reliable deployment.",
-  "Beyond the code, I'm a founder. I started Absurd Geeks, a community for young builders, because I believe the next generation of serious digital products can — and will — come from Africa.",
+  "I trained as a telecommunications and ICT engineer at SUP'PTIC in Yaoundé — class of 2026 — on top of a computer science foundation. The combination means I'm as comfortable inside a production IP network as I am inside a React codebase: I've built web platforms, Android apps, AI-assisted tools, seven-server Linux environments, OpenStack clouds, and cybersecurity labs designed to be attacked.",
+  "I've shipped for real organizations: Terra Talent Hub's skills verification platform, CAMTEL's production networks, Zenorva Support's web presence, Dewise Energy, and the Cam e-guide education platform. I move fast on instinct, but I pair that energy with careful engineering — clean interfaces, practical architecture, security awareness, reliable deployment.",
+  "And I'm a founder. I started Absurd Geeks, a community for young builders, because I believe the next generation of serious digital products can — and will — come from Africa.",
 ];
 
 export const facts = [
   { label: "Base", value: "Yaoundé, Cameroon" },
-  { label: "Education", value: "SUP'PTIC — Telecommunications & ICT Engineering" },
-  { label: "Background", value: "Computer Science" },
+  { label: "Formation", value: "SUP'PTIC — Telecommunications & ICT Engineering, 2026" },
+  { label: "Foundation", value: "Computer Science" },
+  { label: "Founder", value: "Absurd Geeks" },
   { label: "Languages", value: "English · French" },
   { label: "Status", value: "Available for select projects" },
 ];
@@ -367,43 +462,50 @@ export const expertise: Expertise[] = [
     index: "01",
     title: "Frontend Engineering",
     description:
-      "Interfaces that feel engineered — fast, accessible, and precise, from design system to deployment.",
+      "Interfaces people trust at first glance — fast, accessible, and precise, from design system to deployed product.",
     tools: ["React", "Next.js", "TypeScript", "Tailwind CSS", "GSAP", "Webflow"],
   },
   {
     index: "02",
     title: "Backend & APIs",
     description:
-      "Secure service layers: authentication, payments, data models, and APIs that stay predictable under load.",
+      "Service layers that hold up: authentication, payments, and data models that stay predictable as products grow.",
     tools: ["Node.js", "Supabase", "PHP", "Python · Flask", "MySQL", "PostgreSQL"],
   },
   {
     index: "03",
     title: "Networks & Telecommunications",
     description:
-      "My engineering core — routing, switching, and diagnosing production IP networks at telecom scale.",
+      "My engineering core — keeping production IP networks routed, diagnosed, and alive at telecom scale.",
     tools: ["OSPF", "MPLS", "VLAN", "NAT", "Wireshark", "MikroTik", "Huawei eNSP"],
   },
   {
     index: "04",
     title: "Cybersecurity",
     description:
-      "Offense-informed defense: monitored labs, penetration testing, static analysis, and hardened deployments.",
+      "Offense-informed defense — systems built knowing how they will be attacked, monitored so intrusions are seen.",
     tools: ["Wazuh", "Zabbix", "Metasploit", "Kali Linux", "MobSF", "WCAG audits"],
   },
   {
     index: "05",
-    title: "Cloud & Infrastructure",
+    title: "Systems & Infrastructure",
     description:
-      "From bare Linux to private cloud — services that name, route, authenticate, and deliver reliably.",
+      "From bare Linux to private cloud — the invisible layer that names, routes, authenticates, and delivers reliably.",
     tools: ["Linux", "OpenStack", "Docker", "VMware", "Samba + AD", "DNS/DHCP"],
   },
   {
     index: "06",
     title: "AI & Automation",
     description:
-      "Practical intelligence: AI-assisted tools, data analysis, and automation that removes real friction.",
+      "Practical intelligence — AI-assisted tools and data analysis that remove real friction, not add demos.",
     tools: ["Python", "PCA / Data Science", "Flask", "AI Integration", "SQLite"],
+  },
+  {
+    index: "07",
+    title: "Product Thinking",
+    description:
+      "The founder's lens — scoping what matters, designing for conversion and trust, shipping what users adopt.",
+    tools: ["Discovery", "IA & Copy", "Conversion Design", "Payments & Pricing", "Launch"],
   },
 ];
 
