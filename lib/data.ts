@@ -431,10 +431,12 @@ export const projectGroups: ProjectGroup[] = [
 /* ------------------------------------------------------------------ */
 
 export const story = [
-  "It started with a locked Android phone. Weeks of research, trial, and error — until it opened. That was the moment I learned to look beneath the surface of technology, and I never stopped.",
-  "I trained as a telecommunications and ICT engineer at SUP'PTIC in Yaoundé — class of 2026 — on top of a computer science foundation. The combination means I'm as comfortable inside a production IP network as I am inside a React codebase: I've built web platforms, Android apps, AI-assisted tools, seven-server Linux environments, OpenStack clouds, and cybersecurity labs designed to be attacked.",
-  "I've shipped for real organizations: Terra Talent Hub's skills verification platform, CAMTEL's production networks, Zenorva Support's web presence, Dewise Energy, and the Cam e-guide education platform. I move fast on instinct, but I pair that energy with careful engineering — clean interfaces, practical architecture, security awareness, reliable deployment.",
-  "And I'm a founder. I started Absurd Geeks, a community for young builders, because I believe the next generation of serious digital products can — and will — come from Africa.",
+  "I'm Ateh Frank Ateh, a full-stack developer and computer networks engineering student at SUP'PTIC in Yaounde, Cameroon. I build web platforms, mobile apps, APIs, payment flows, network labs, and infrastructure projects.",
+  "My curiosity started early, after fixing a locked Android phone through weeks of research, trial, and error. That moment taught me to look beneath the surface of technology and understand systems deeply.",
+  "Since then, I have built school management platforms, Android apps, AI-assisted learning tools, multi-server Linux environments, OpenStack cloud deployments, NoSQL systems, cybersecurity labs, and client websites.",
+  "Professionally, I have worked on Zenorva Support's web presence, Terra Talent Hub's skills verification platform, CAMTEL production IP networks, Dewise Energy's website, and Cam e-guide / Skolarr's education platform.",
+  "I describe myself as a vibe coder because I build with instinct, speed, and experimentation, but I pair that energy with careful engineering: clean interfaces, practical architecture, security awareness, and reliable deployment.",
+  "Beyond code, I care about building communities and opportunities from Africa. I founded Absurd Geeks, contributed to student representation initiatives, and keep learning across software, networks, cybersecurity, and cloud infrastructure.",
 ];
 
 export const facts = [

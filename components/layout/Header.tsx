@@ -56,9 +56,9 @@ export function Header() {
           href="/"
           className="font-sans text-sm font-semibold tracking-tight text-bone"
           onClick={() => setOpen(false)}
-          aria-label="Frank Ateh — home"
+          aria-label="Ateh Frank Ateh — home"
         >
-          FRANK ATEH<span className="text-brass">.</span>
+          ATEH FRANK ATEH<span className="text-brass">.</span>
         </Link>
 
         <nav className="hidden items-center gap-8 md:flex" aria-label="Primary">
