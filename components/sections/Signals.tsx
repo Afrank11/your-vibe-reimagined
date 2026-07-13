@@ -8,7 +8,7 @@ import { testimonials, trustedBy, stats } from "@/lib/data";
  */
 export function Signals() {
   return (
-    <section id="signals" className="mx-auto max-w-site scroll-mt-24 px-6 py-28 md:px-10 md:py-40">
+    <section id="signals" className="mx-auto max-w-site scroll-mt-24 px-7 sm:px-10 py-28 md:px-16 xl:px-24 md:py-40">
       <SectionHeading
         index="07"
         label="Signals"

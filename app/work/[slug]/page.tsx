@@ -48,7 +48,7 @@ export default async function CaseStudyPage({ params }: Props) {
   const next = caseStudies[(index + 1) % caseStudies.length];
 
   return (
-    <article className="mx-auto max-w-site px-6 pb-28 pt-32 md:px-10 md:pb-40 md:pt-44">
+    <article className="mx-auto max-w-site px-7 sm:px-10 pb-28 pt-32 md:px-16 xl:px-24 md:pb-40 md:pt-44">
       {/* Title block */}
       <div className="mb-10 flex flex-wrap items-baseline gap-x-4 gap-y-2 md:mb-14">
         <Link href="/work" className="link-quiet label-mono !text-brass">

@@ -23,7 +23,7 @@ export function Footer() {
 
   return (
     <footer className="rule">
-      <div className="mx-auto flex max-w-site flex-col gap-3 px-6 py-8 md:flex-row md:items-center md:justify-between md:px-10">
+      <div className="mx-auto flex max-w-site flex-col gap-3 px-7 sm:px-10 py-8 md:flex-row md:items-center md:justify-between md:px-16 xl:px-24">
         <p className="label-mono">© {new Date().getFullYear()} Frank Ateh — Yaoundé, Cameroon</p>
         <p className="label-mono">
           {contact.coordinates}

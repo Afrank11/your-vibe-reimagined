@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 
 export default function NotesPage() {
   return (
-    <div className="mx-auto max-w-site px-6 pb-28 pt-32 md:px-10 md:pb-40 md:pt-44">
+    <div className="mx-auto max-w-site px-7 sm:px-10 pb-28 pt-32 md:px-16 xl:px-24 md:pb-40 md:pt-44">
       <div className="mb-10 flex items-baseline gap-4 md:mb-14">
         <span className="label-mono !text-brass">Notes</span>
         <span className="label-mono">{articles.length} entries — build logs & essays</span>

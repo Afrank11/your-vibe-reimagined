@@ -144,7 +144,7 @@ export function Hero() {
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-ink via-ink/50 to-transparent" />
 
       {/* ── content ── */}
-      <div className="relative mx-auto flex w-full max-w-site flex-1 flex-col justify-center px-6 pb-24 pt-28 md:px-10 md:pb-28 md:pt-32">
+      <div className="relative mx-auto flex w-full max-w-site flex-1 flex-col justify-center px-7 sm:px-10 pb-24 pt-28 md:px-16 xl:px-24 md:pb-28 md:pt-32">
         <div className="grid items-center gap-10 md:grid-cols-12 md:gap-12">
           {/* portrait in a technical frame — right column on desktop, centered first on mobile */}
           <Reveal
@@ -252,7 +252,7 @@ export function Hero() {
       </div>
 
       {/* bottom strip */}
-      <div ref={stripRef} className="relative mx-auto w-full max-w-site px-6 pb-8 md:px-10 md:pb-10">
+      <div ref={stripRef} className="relative mx-auto w-full max-w-site px-7 sm:px-10 pb-8 md:px-16 xl:px-24 md:pb-10">
         <Reveal delay={delay + 1.35} duration={1.1} className="flex items-center gap-4">
           <span className="label-mono !text-brass">01</span>
           <span className="label-mono">Scroll</span>

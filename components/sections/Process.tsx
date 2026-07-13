@@ -6,7 +6,7 @@ export function Process() {
   return (
     // second light passage — the page alternates dark and light movements
     <section id="process" className="theme-light border-y border-line bg-ink text-bone">
-      <div className="mx-auto max-w-site scroll-mt-24 px-6 py-28 md:px-10 md:py-40">
+      <div className="mx-auto max-w-site scroll-mt-24 px-7 sm:px-10 py-28 md:px-16 xl:px-24 md:py-40">
         <SectionHeading
           index="06"
           label="Process"

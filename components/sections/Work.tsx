@@ -147,7 +147,7 @@ function CasePanel({ project, flip }: { project: CaseStudy; flip: boolean }) {
 
 export function Work() {
   return (
-    <section id="work" className="mx-auto max-w-site scroll-mt-24 px-6 py-28 md:px-10 md:py-40">
+    <section id="work" className="mx-auto max-w-site scroll-mt-24 px-7 sm:px-10 py-28 md:px-16 xl:px-24 md:py-40">
       <SectionHeading
         index="04"
         label="Selected work"

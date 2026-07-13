@@ -10,7 +10,7 @@ export function About() {
   return (
     <section id="about" className="scroll-mt-24">
       {/* the hero dissolves out while this dissolves in — a crossfade, not a scroll-past */}
-      <FadeThrough className="mx-auto max-w-site px-6 py-28 md:px-10 md:py-40">
+      <FadeThrough className="mx-auto max-w-site px-7 sm:px-10 py-28 md:px-16 xl:px-24 md:py-40">
       <SectionHeading
         index="02"
         label="About"

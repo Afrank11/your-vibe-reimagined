@@ -52,7 +52,7 @@ export function Header() {
         scrolled && !open ? "border-b border-line bg-[#070707]" : "border-b border-transparent"
       }`}
     >
-      <div className="mx-auto flex h-16 max-w-site items-center justify-between px-6 md:h-[72px] md:px-10">
+      <div className="mx-auto flex h-16 max-w-site items-center justify-between px-7 sm:px-10 md:h-[72px] md:px-16 xl:px-24">
         <Link
           href="/"
           className="font-sans text-sm font-semibold tracking-tight text-bone"

@@ -14,7 +14,7 @@ const CHANNELS = [
 export function Contact() {
   return (
     <section id="contact" className="border-t border-line">
-      <div className="mx-auto max-w-site scroll-mt-24 px-6 py-28 md:px-10 md:py-44">
+      <div className="mx-auto max-w-site scroll-mt-24 px-7 sm:px-10 py-28 md:px-16 xl:px-24 md:py-44">
         <div className="mb-10 flex items-baseline gap-4 md:mb-16">
           <span className="label-mono !text-brass">08</span>
           <span className="label-mono">Contact</span>
