@@ -112,7 +112,7 @@ export function Hero() {
   }, [reduced]);
 
   return (
-    <section ref={rootRef} className="relative flex min-h-[100svh] flex-col overflow-hidden">
+    <section ref={rootRef} className="relative flex min-h-[100svh] flex-col overflow-hidden bg-ink">
       {/* the living network — forms after the preloader clears */}
       <div ref={canvasWrapRef} className="absolute inset-0">
         <SignalField className="absolute inset-0" startDelay={delay * 1000 - 400} />

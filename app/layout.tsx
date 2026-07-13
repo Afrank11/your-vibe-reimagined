@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { IBM_Plex_Mono, Instrument_Serif, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import { SmoothScroll } from "@/components/providers/SmoothScroll";
+import { AmbientField } from "@/components/canvas/AmbientField";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { Preloader } from "@/components/layout/Preloader";
@@ -56,6 +57,8 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/",
   },
+  // og/twitter images come from app/opengraph-image.tsx (file convention),
+  // so previews always match the current design
   openGraph: {
     type: "profile",
     url: SITE.url,
@@ -63,21 +66,12 @@ export const metadata: Metadata = {
     title: SITE.title,
     description: SITE.description,
     locale: "en_US",
-    images: [
-      {
-        url: SITE.ogImage,
-        width: 1200,
-        height: 1200,
-        alt: "Frank Ateh — Telecommunications Engineer & Web Developer",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
     title: SITE.title,
     description: SITE.description,
     creator: SITE.twitterHandle,
-    images: [SITE.ogImage],
   },
   robots: {
     index: true,
@@ -116,6 +110,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         >
           Skip to content
         </a>
+        {/* quiet ambient network behind every dark passage of the page */}
+        <div aria-hidden className="pointer-events-none fixed inset-0 opacity-40">
+          <AmbientField />
+        </div>
         <SmoothScroll>
           <Preloader />
           <Header />

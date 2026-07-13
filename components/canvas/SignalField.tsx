@@ -16,6 +16,8 @@ type Props = {
   className?: string;
   /** ms to wait before the network starts forming (lets the preloader clear). */
   startDelay?: number;
+  /** Ambient mode: far fewer nodes — a quiet backdrop, not a spectacle. */
+  sparse?: boolean;
 };
 
 /**
@@ -25,7 +27,7 @@ type Props = {
  * a few pixels with the cursor for depth. Canvas 2D — cheap, pausable.
  * Static, fully-formed frame under reduced motion.
  */
-export function SignalField({ className = "", startDelay = 0 }: Props) {
+export function SignalField({ className = "", startDelay = 0, sparse = false }: Props) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const reduced = usePrefersReducedMotion();
 
@@ -57,8 +59,9 @@ export function SignalField({ className = "", startDelay = 0 }: Props) {
       canvas.style.height = `${height}px`;
 
       const memory = (navigator as { deviceMemory?: number }).deviceMemory ?? 8;
-      const density = memory <= 4 ? 22000 : 11500;
-      const count = Math.max(40, Math.min(150, Math.round((width * height) / density)));
+      const density = (memory <= 4 ? 22000 : 11500) * (sparse ? 4 : 1);
+      const cap = sparse ? 34 : 150;
+      const count = Math.max(sparse ? 16 : 40, Math.min(cap, Math.round((width * height) / density)));
       nodes = Array.from({ length: count }, () => ({
         x: Math.random() * width,
         y: Math.random() * height,

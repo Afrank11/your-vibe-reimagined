@@ -12,6 +12,7 @@ const NAV = [
   { label: "About", hash: "#about" },
   { label: "Expertise", hash: "#expertise" },
   { label: "Record", hash: "#record" },
+  { label: "Distinctions", hash: "#distinctions" },
   { label: "Process", hash: "#process" },
   { label: "Contact", hash: "#contact" },
 ];

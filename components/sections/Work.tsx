@@ -42,20 +42,26 @@ function CasePanel({ project, flip }: { project: CaseStudy; flip: boolean }) {
                   }`}
                 />
               </div>
-              {/* readability gradient + title bar over the screenshot */}
-              <div className="absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-ink/95 via-ink/55 to-transparent transition-opacity duration-500" />
+              {/* readability scrim — solid at the baseline so type reads over
+                  any screenshot, dark or light */}
+              <div className="absolute inset-x-0 bottom-0 h-3/5 bg-gradient-to-t from-[#070707] via-[#070707]/80 to-transparent" />
               <div className="absolute inset-x-0 bottom-0 flex items-end justify-between p-6 md:p-8">
                 <div>
-                  <p className="label-mono mb-2">{project.kind}</p>
-                  <p className="display text-2xl transition-transform duration-500 ease-out group-hover:-translate-y-1 md:text-4xl">
+                  <p className="mb-2 font-mono text-[11px] uppercase tracking-[0.18em] text-[#c2a57b]">
+                    {project.kind}
+                  </p>
+                  <p
+                    className="display text-2xl !text-[#edece6] transition-transform duration-500 ease-out group-hover:-translate-y-1 md:text-4xl"
+                    style={{ textShadow: "0 1px 12px rgba(7,7,7,0.9)" }}
+                  >
                     {project.title}
                   </p>
                 </div>
-                <span className="mb-1 flex h-10 w-10 items-center justify-center border border-bone/25 bg-ink/60 opacity-0 transition-all duration-500 group-hover:opacity-100">
+                <span className="mb-1 flex h-10 w-10 items-center justify-center border border-bone/25 bg-ink/60 opacity-100 transition-all duration-500 md:opacity-0 md:group-hover:opacity-100">
                   <ArrowUpRight className="text-bone" />
                 </span>
               </div>
-              <span className="label-mono absolute right-4 top-4 bg-ink/70 px-2.5 py-1.5 !text-brass">
+              <span className="label-mono absolute right-4 top-4 bg-[#070707]/85 px-2.5 py-1.5 !text-[#c2a57b]">
                 {project.index}
               </span>
             </>
@@ -89,10 +95,22 @@ function CasePanel({ project, flip }: { project: CaseStudy; flip: boolean }) {
           <span aria-hidden className="absolute left-3 top-3 h-3 w-3 border-l border-t border-bone/20" />
           <span aria-hidden className="absolute bottom-3 right-3 h-3 w-3 border-b border-r border-bone/20" />
         </Link>
+
+        {/* Mobile: preview only — one short line + the doorway */}
+        <div className="mt-4 md:hidden">
+          <p className="line-clamp-2 text-sm leading-relaxed text-silver">{project.summary}</p>
+          <Link
+            href={`/work/${project.slug}`}
+            className="mt-3 inline-flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.18em] text-brass"
+          >
+            <span className="link-quiet">View case study</span>
+            <ArrowUpRight />
+          </Link>
+        </div>
       </div>
 
-      {/* Case-study meta */}
-      <div className={`md:col-span-5 ${flip ? "md:order-1" : ""}`}>
+      {/* Case-study meta — desktop only; mobile gets the compact preview above */}
+      <div className={`hidden md:block md:col-span-5 ${flip ? "md:order-1" : ""}`}>
         <div className="flex h-full flex-col justify-between">
           <div>
             <h3 className="sr-only">{project.title}</h3>
@@ -141,7 +159,7 @@ export function Work() {
       />
 
       {/* one case on stage at a time: each panel dissolves in, then hands over */}
-      <div className="mt-16 space-y-24 md:mt-24 md:space-y-40">
+      <div className="mt-16 space-y-16 md:mt-24 md:space-y-40">
         {caseStudies.map((project, i) => (
           <FadeThrough key={project.slug}>
             <CasePanel project={project} flip={i % 2 === 1} />

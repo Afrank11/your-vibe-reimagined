@@ -85,7 +85,7 @@ export default async function CaseStudyPage({ params }: Props) {
                   study.imageFit === "contain" ? "object-contain p-10 md:p-20" : "object-cover"
                 }
               />
-              <div className="absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-ink/80 to-transparent" />
+              <div className="absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-[#070707]/95 via-[#070707]/60 to-transparent" />
             </>
           ) : (
             <Parallax speed={0.1} className="absolute inset-0 flex items-center justify-center">

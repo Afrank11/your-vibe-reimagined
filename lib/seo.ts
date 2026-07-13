@@ -4,10 +4,9 @@ export const SITE = {
   url: "https://atehfrank.com",
   name: "Frank Ateh",
   fullName: "Ateh Frank Ateh",
-  title: "Frank Ateh — Telecommunications Engineer & Web Developer | Cameroon",
+  title: "Frank Ateh — Full-Stack Developer & Network Engineer | Ateh Frank, Cameroon",
   description:
-    "Frank Ateh (Ateh Frank Ateh) is a telecommunications & ICT engineer and full-stack web developer from Yaoundé, Cameroon. SUP'PTIC engineer. Premium websites, networks, cybersecurity — 20+ documented projects.",
-  ogImage: "/ateh.jpg",
+    "Frank Ateh is a full-stack developer and network engineer from Yaoundé, Cameroon — SUP'PTIC-trained telecommunications engineer and founder of Absurd Geeks and Frinux Technologies. Ateh Frank builds premium websites, resilient networks, and secure systems: 21 documented projects.",
   twitterHandle: "@Afrank11",
 } as const;
 
@@ -33,9 +32,13 @@ export const personJsonLd = {
   alternateName: alternateNames,
   url: SITE.url,
   image: `${SITE.url}/ateh.jpg`,
-  jobTitle: ["Telecommunications Engineer", "Software Engineer", "Web Developer"],
+  jobTitle: ["Full-Stack Developer", "Network Engineer", "Telecommunications Engineer"],
   description:
-    "Ateh Frank Ateh (Frank Ateh) is a telecommunications & ICT engineer, full-stack web developer, and founder from Cameroon. SUP'PTIC engineer based in Yaoundé.",
+    "Frank Ateh (Ateh Frank Ateh) is a full-stack developer and network engineer from Yaoundé, Cameroon — SUP'PTIC-trained telecommunications engineer and founder of Absurd Geeks and Frinux Technologies.",
+  worksFor: [
+    { "@type": "Organization", name: "Absurd Geeks" },
+    { "@type": "Organization", name: "Frinux Technologies" },
+  ],
   nationality: "Cameroonian",
   address: {
     "@type": "PostalAddress",

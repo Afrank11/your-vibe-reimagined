@@ -3,6 +3,7 @@ import { SectionHeading } from "./SectionHeading";
 import { Reveal } from "@/components/motion/Reveal";
 import { Parallax } from "@/components/motion/Parallax";
 import { FadeThrough } from "@/components/motion/FadeThrough";
+import { StoryExpander } from "./StoryExpander";
 import { story, facts } from "@/lib/data";
 
 export function About() {
@@ -42,15 +43,9 @@ export function About() {
         </div>
 
         <div className="md:col-span-6 md:col-start-7">
-          <div className="space-y-6">
-            {story.map((paragraph, i) => (
-              <Reveal key={i} delay={i * 0.05}>
-                <p className="max-w-[62ch] text-base leading-relaxed text-silver md:text-lg">
-                  {paragraph}
-                </p>
-              </Reveal>
-            ))}
-          </div>
+          <Reveal>
+            <StoryExpander intro={story[0]} rest={story.slice(1)} />
+          </Reveal>
 
           <Reveal className="mt-12" stagger>
             {facts.map((fact) => (

@@ -13,11 +13,15 @@ if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
 }
 
-/* Snake geometry: a 1200-unit-wide coordinate space, one bend per entry. */
+/* Snake geometry: a 1200-unit-wide coordinate space, one bend per entry.
+   The SVG stretches to the container (strokes stay 1.5px via
+   vector-effect); stations and the traveling dot are HTML so they never
+   distort — which lets the same S work from phone to ultrawide. */
 const ROW_H = 340;
 const X_LEFT = 170;
 const X_RIGHT = 1030;
 const X_CENTER = 600;
+const VIEW_W = 1200;
 
 function snakePath(n: number): string {
   let d = `M ${X_CENTER} 0`;
@@ -38,7 +42,7 @@ function snakePath(n: number): string {
 export function Record() {
   const snakeRef = useRef<HTMLDivElement>(null);
   const progressRef = useRef<SVGPathElement>(null);
-  const dotRef = useRef<SVGGElement>(null);
+  const dotRef = useRef<HTMLDivElement>(null);
   const rowRefs = useRef<(HTMLDivElement | null)[]>([]);
   const reduced = usePrefersReducedMotion();
 
@@ -51,43 +55,48 @@ export function Record() {
   useLayoutEffect(() => {
     if (reduced || !snakeRef.current || !progressRef.current) return;
 
-    const mm = gsap.matchMedia();
-    mm.add("(min-width: 768px)", () => {
-      const pathEl = progressRef.current!;
-      const len = pathEl.getTotalLength();
-      gsap.set(pathEl, { strokeDasharray: len, strokeDashoffset: len });
+    const pathEl = progressRef.current;
+    const len = pathEl.getTotalLength();
+    gsap.set(pathEl, { strokeDasharray: len, strokeDashoffset: len });
 
-      // start dimmed
-      rowRefs.current.forEach((row, i) => {
-        if (row) gsap.set(row, { opacity: i === 0 ? 1 : 0.3 });
-      });
+    const placeDot = (p: number) => {
+      if (!dotRef.current || !snakeRef.current) return;
+      const pt = pathEl.getPointAtLength(len * p);
+      const w = snakeRef.current.clientWidth;
+      dotRef.current.style.transform = `translate(${(pt.x / VIEW_W) * w}px, ${pt.y}px)`;
+      return pt;
+    };
 
-      const st = ScrollTrigger.create({
-        trigger: snakeRef.current,
-        start: "top 62%",
-        end: "bottom 62%",
-        scrub: 0.4,
-        onUpdate(self) {
-          const p = self.progress;
-          gsap.set(pathEl, { strokeDashoffset: len * (1 - p) });
-          const pt = pathEl.getPointAtLength(len * p);
-          dotRef.current?.setAttribute("transform", `translate(${pt.x}, ${pt.y})`);
-          const active = Math.max(0, Math.min(n - 1, Math.floor(pt.y / ROW_H)));
-          rowRefs.current.forEach((row, i) => {
-            if (!row) return;
-            gsap.to(row, {
-              opacity: i === active ? 1 : 0.3,
-              scale: i === active ? 1 : 0.985,
-              duration: 0.35,
-              overwrite: "auto",
-            });
-          });
-        },
-      });
-      return () => st.kill();
+    // initial state
+    placeDot(0);
+    rowRefs.current.forEach((row, i) => {
+      if (row) gsap.set(row, { opacity: i === 0 ? 1 : 0.3 });
     });
 
-    return () => mm.revert();
+    const st = ScrollTrigger.create({
+      trigger: snakeRef.current,
+      start: "top 62%",
+      end: "bottom 62%",
+      scrub: 0.4,
+      onUpdate(self) {
+        const p = self.progress;
+        gsap.set(pathEl, { strokeDashoffset: len * (1 - p) });
+        const pt = placeDot(p);
+        if (!pt) return;
+        const active = Math.max(0, Math.min(n - 1, Math.floor(pt.y / ROW_H)));
+        rowRefs.current.forEach((row, i) => {
+          if (!row) return;
+          gsap.to(row, {
+            opacity: i === active ? 1 : 0.3,
+            scale: i === active ? 1 : 0.985,
+            duration: 0.35,
+            overwrite: "auto",
+          });
+        });
+      },
+    });
+
+    return () => st.kill();
   }, [reduced, n]);
 
   return (
@@ -102,15 +111,11 @@ export function Record() {
         ]}
       />
 
-      {/* ── Desktop: the S-path journey ── */}
-      <div
-        ref={snakeRef}
-        className="relative mt-14 hidden md:block md:mt-20"
-        style={{ height: totalH }}
-      >
+      {/* ── The S-path journey — every screen size ── */}
+      <div ref={snakeRef} className="relative mt-14 md:mt-20" style={{ height: totalH }}>
         <svg
           className="absolute inset-0 h-full w-full"
-          viewBox={`0 0 1200 ${totalH}`}
+          viewBox={`0 0 ${VIEW_W} ${totalH}`}
           preserveAspectRatio="none"
           aria-hidden
         >
@@ -130,29 +135,29 @@ export function Record() {
             stroke="var(--brass)"
             strokeWidth="1.5"
             vectorEffect="non-scaling-stroke"
-            style={reduced ? undefined : { strokeDasharray: 1, strokeDashoffset: 1 }}
           />
-          {/* station markers at each bend */}
-          {record.map((entry, i) => (
-            <circle
-              key={entry.year}
-              cx={i % 2 === 0 ? X_LEFT : X_RIGHT}
-              cy={i * ROW_H + ROW_H / 2}
-              r="6"
-              fill="var(--ink)"
-              stroke="var(--brass)"
-              strokeWidth="1.5"
-              vectorEffect="non-scaling-stroke"
-            />
-          ))}
-          {/* the traveling signal */}
-          {!reduced && (
-            <g ref={dotRef} transform={`translate(${X_CENTER}, 0)`}>
-              <circle r="10" fill="rgba(194,165,123,0.15)" />
-              <circle r="4" fill="var(--brass)" />
-            </g>
-          )}
         </svg>
+
+        {/* station markers at each bend (HTML — no viewBox distortion) */}
+        {record.map((entry, i) => (
+          <span
+            key={entry.year}
+            aria-hidden
+            className="absolute h-2.5 w-2.5 rounded-full border border-brass bg-ink"
+            style={{
+              left: `calc(${((i % 2 === 0 ? X_LEFT : X_RIGHT) / VIEW_W) * 100}% - 5px)`,
+              top: i * ROW_H + ROW_H / 2 - 5,
+            }}
+          />
+        ))}
+
+        {/* the traveling signal */}
+        {!reduced && (
+          <div ref={dotRef} className="pointer-events-none absolute left-0 top-0 z-10" aria-hidden>
+            <span className="absolute -ml-2.5 -mt-2.5 block h-5 w-5 rounded-full bg-brass/20" />
+            <span className="absolute -ml-1 -mt-1 block h-2 w-2 rounded-full bg-brass" />
+          </div>
+        )}
 
         {record.map((entry, i) => (
           <div
@@ -166,12 +171,14 @@ export function Record() {
             style={{ top: i * ROW_H }}
           >
             <div
-              className={`w-full max-w-md ${
-                i % 2 === 0 ? "ml-[calc(14%+3rem)]" : "mr-[calc(14%+3rem)] text-right"
+              className={`flex-1 md:max-w-md ${
+                i % 2 === 0
+                  ? "ml-[calc(14%+1.25rem)] md:ml-[calc(14%+3rem)]"
+                  : "mr-[calc(14%+1.25rem)] md:mr-[calc(14%+3rem)] text-right"
               }`}
             >
               <p className="label-mono mb-2 !text-brass">{entry.year}</p>
-              <h3 className="display text-xl lg:text-2xl">{entry.title}</h3>
+              <h3 className="display text-lg sm:text-xl lg:text-2xl">{entry.title}</h3>
               <p className="mt-1 font-mono text-xs tracking-wide text-bone/80">{entry.org}</p>
               <p
                 className={`mt-3 text-sm leading-relaxed text-silver ${
@@ -185,29 +192,8 @@ export function Record() {
         ))}
       </div>
 
-      {/* ── Mobile: simple rail ── */}
-      <div className="relative mt-14 md:hidden">
-        <div className="absolute bottom-0 left-[3px] top-1 w-px bg-line" aria-hidden />
-        <ol className="space-y-12">
-          {record.map((entry) => (
-            <Reveal key={entry.year}>
-              <li className="relative pl-9">
-                <span
-                  className="absolute left-0 top-[7px] h-[7px] w-[7px] rounded-full bg-brass"
-                  aria-hidden
-                />
-                <p className="label-mono mb-2 !text-brass">{entry.year}</p>
-                <h3 className="display text-xl">{entry.title}</h3>
-                <p className="mt-1 font-mono text-xs tracking-wide text-bone/80">{entry.org}</p>
-                <p className="mt-3 text-sm leading-relaxed text-silver">{entry.detail}</p>
-              </li>
-            </Reveal>
-          ))}
-        </ol>
-      </div>
-
       {/* ── Distinctions — the trophy shelf ── */}
-      <div className="mt-24 md:mt-32">
+      <div id="distinctions" className="mt-24 scroll-mt-28 md:mt-32">
         <Reveal className="mb-8 flex items-center gap-3">
           <Sparkle className="text-brass" />
           <p className="label-mono !text-bone">Distinctions</p>

@@ -471,19 +471,19 @@ export const projectGroups: ProjectGroup[] = [
 /* ------------------------------------------------------------------ */
 
 export const story = [
-  "I'm Ateh Frank Ateh, a full-stack developer and computer networks engineering student at SUP'PTIC in Yaounde, Cameroon. I build web platforms, mobile apps, APIs, payment flows, network labs, and infrastructure projects.",
+  "I'm Ateh Frank Ateh, a full-stack developer and network engineer from Yaoundé, Cameroon, trained at SUP'PTIC. I build web platforms, mobile apps, APIs, payment flows, network labs, and infrastructure projects.",
   "My curiosity started early, after fixing a locked Android phone through weeks of research, trial, and error. That moment taught me to look beneath the surface of technology and understand systems deeply.",
   "Since then, I have built school management platforms, Android apps, AI-assisted learning tools, multi-server Linux environments, OpenStack cloud deployments, NoSQL systems, cybersecurity labs, and client websites.",
   "Professionally, I have worked on Zenorva Support's web presence, Terra Talent Hub's skills verification platform, CAMTEL production IP networks, Dewise Energy's website, and Cam e-guide / Skolarr's education platform.",
   "I describe myself as a vibe coder because I build with instinct, speed, and experimentation, but I pair that energy with careful engineering: clean interfaces, practical architecture, security awareness, and reliable deployment.",
-  "Beyond code, I care about building communities and opportunities from Africa. I founded Absurd Geeks, contributed to student representation initiatives, and keep learning across software, networks, cybersecurity, and cloud infrastructure.",
+  "Beyond code, I care about building companies and opportunities from Africa. I founded Absurd Geeks, a digital marketing agency, and Frinux Technologies — and I keep learning across software, networks, cybersecurity, and cloud infrastructure.",
 ];
 
 export const facts = [
   { label: "Base", value: "Yaoundé, Cameroon" },
   { label: "Formation", value: "SUP'PTIC — Telecommunications & ICT Engineering, 2026" },
   { label: "Foundation", value: "Computer Science" },
-  { label: "Founder", value: "Absurd Geeks" },
+  { label: "Founder", value: "Absurd Geeks · Frinux Technologies" },
   { label: "Languages", value: "English · French" },
   { label: "Status", value: "Available for select projects" },
 ];
@@ -604,7 +604,8 @@ export const distinctions = [
   "Selected founder — U.S. Embassy accelerator",
   "Bronze mention — ODSA Hackathon",
   "Bronze mention — International Youth Math Challenge",
-  "Founder — Absurd Geeks community",
+  "Founder — Absurd Geeks, digital marketing agency",
+  "Founder — Frinux Technologies",
   "21 documented projects · 50,000+ lines of code",
 ];
 
