@@ -8,7 +8,7 @@ type Pulse = { a: number; b: number; t: number };
 
 const LINK_DIST = 150;
 /** Scattered particles hold alone for this long before lines start drawing. */
-const PARTICLE_HOLD_MS = 400;
+const PARTICLE_HOLD_MS = 1000;
 const NODE_FADE_MS = 400;
 const LINK_FORMATION_MS = 2000;
 

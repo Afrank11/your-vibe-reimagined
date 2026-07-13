@@ -146,9 +146,13 @@ export function Hero() {
       {/* ── content ── */}
       <div className="relative mx-auto flex w-full max-w-site flex-1 flex-col justify-center px-6 pb-24 pt-28 md:px-10 md:pb-28 md:pt-32">
         <div className="grid items-center gap-10 md:grid-cols-12 md:gap-12">
-          {/* portrait in a technical frame — right column on desktop, first on mobile */}
-          <Reveal delay={delay + 0.5} className="order-1 md:order-2 md:col-span-4 md:justify-self-end">
-            <div ref={photoRef} className="max-w-[260px] md:max-w-none">
+          {/* portrait in a technical frame — right column on desktop, centered first on mobile */}
+          <Reveal
+            delay={delay + 0.7}
+            duration={1.3}
+            className="order-1 flex justify-center md:order-2 md:col-span-4 md:block md:justify-self-end"
+          >
+            <div ref={photoRef} className="w-full max-w-[260px] md:max-w-none">
               {/* frame zone — the corner marks frame the photo only, and stay
                   static while the photo inside drifts with the cursor */}
               <div className="relative">
@@ -189,7 +193,8 @@ export function Hero() {
               <MaskedLines
                 as="span"
                 className="block"
-                delay={delay + 0.15}
+                delay={delay + 0.2}
+                duration={1.15}
                 lines={[
                   <span key="l1">Ateh Frank</span>,
                   <span key="l2">
@@ -199,7 +204,7 @@ export function Hero() {
               />
             </h1>
 
-            <Reveal delay={delay + 0.45} className="mt-6">
+            <Reveal delay={delay + 0.75} duration={1.1} className="mt-6">
               <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-silver md:text-xs">
                 {ROLES.map((role, i) => (
                   <span key={role}>
@@ -210,14 +215,14 @@ export function Hero() {
               </p>
             </Reveal>
 
-            <Reveal delay={delay + 0.55} className="mt-6">
+            <Reveal delay={delay + 0.95} duration={1.1} className="mt-6">
               <p className="max-w-xl text-base leading-relaxed text-silver md:text-lg">
                 I design and engineer digital experiences where technology,
                 creativity, and performance meet.
               </p>
             </Reveal>
 
-            <Reveal delay={delay + 0.65} className="mt-9 flex flex-wrap items-center gap-4">
+            <Reveal delay={delay + 1.15} duration={1.1} className="mt-9 flex flex-wrap items-center gap-4">
               <Magnetic>
                 <button
                   type="button"
@@ -248,7 +253,7 @@ export function Hero() {
 
       {/* bottom strip */}
       <div ref={stripRef} className="relative mx-auto w-full max-w-site px-6 pb-8 md:px-10 md:pb-10">
-        <Reveal delay={delay + 0.8} className="flex items-center gap-4">
+        <Reveal delay={delay + 1.35} duration={1.1} className="flex items-center gap-4">
           <span className="label-mono !text-brass">01</span>
           <span className="label-mono">Scroll</span>
           <span className="rule flex-1" />

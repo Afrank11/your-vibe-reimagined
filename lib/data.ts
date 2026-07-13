@@ -36,6 +36,10 @@ export type Project = {
   summary: string;
   summaryFr: string;
   demo?: string;
+  /** Screenshot/visual in public/, e.g. "/projects/terra-talent-hub.png" */
+  image?: string;
+  /** "contain" for logos/diagrams that must not be cropped (default "cover") */
+  imageFit?: "cover" | "contain";
 };
 
 export type CaseStudy = Project & {
@@ -57,6 +61,7 @@ export const caseStudies: CaseStudy[] = [
     slug: "terra-talent-hub",
     index: "01",
     title: "Terra Talent Hub",
+    image: "/projects/terra-talent-hub.png",
     group: "Web",
     kind: "Skills verification platform",
     tags: ["React", "Supabase", "Payments", "QR Certificates"],
@@ -100,51 +105,53 @@ export const caseStudies: CaseStudy[] = [
       "Terra Talent Hub is live at terratalenthub.com. Talents take standardized assessments, earn ranked, QR-verifiable certificates, and employers hire against evidence instead of claims.",
   },
   {
-    slug: "coach-marcus",
+    slug: "reign-cuts",
     index: "02",
-    title: "Coach Marcus",
+    title: "Reign Cuts",
+    image: "/projects/reign-cuts.png",
     group: "Web",
-    kind: "Conversion-focused fitness site",
-    tags: ["React", "Vercel", "Landing Page"],
-    demo: "https://ateh-coach-marcus-demo.vercel.app/",
+    kind: "Premium barbershop website",
+    tags: ["React", "Vercel", "Brand Design", "Booking CTA"],
+    demo: "https://ateh-barberdemo.vercel.app/",
     summary:
-      "A modern fitness coaching site with conversion-focused sections for programs, offers, testimonials, and contact.",
+      "A premium barbershop website — 'Where precision meets style' — with a gold-on-black identity, services, gallery, and booking-ready calls to action.",
     summaryFr:
-      "Site moderne pour coach sportif, avec sections orientées conversion pour programmes, offres, témoignages et contact.",
+      "Site premium pour barbershop — identité or sur noir, services, galerie et appels à l'action prêts pour la réservation.",
     context:
-      "Coaches and creators lose clients to slow, generic websites. The brief: a site that sells the transformation, not the workout.",
+      "Local barbershops compete on skill but lose clients online to generic, slow websites — or no website at all. Reign Cuts is the counter-argument.",
     role:
-      "Design and build, end to end — information architecture, copy structure, responsive build, and deployment.",
+      "Design and build, end to end — brand direction, information architecture, responsive build, and deployment.",
     outcome:
-      "A fast, credible presence where every section moves a visitor one step closer to booking.",
+      "A site that feels like the shop it sells: precise, styled, and confident — with booking one click away from every section.",
     lesson:
-      "For service businesses, the website is a salesperson. Hierarchy and pacing convert better than decoration.",
+      "For service businesses, atmosphere is the product. The site has to feel like the chair before the client ever sits in it.",
     year: "2025",
     problem:
-      "Coaches sell a transformation, but most coaching sites sell a list of workouts. Visitors arrive motivated, meet a wall of generic sections, and leave without booking. The brief was a site that carries a visitor from curiosity to commitment.",
+      "A premium barbershop charges premium prices, and its website has to justify them before a word is read. The brief: a digital storefront where a visitor instantly understands the level of craft — and can book without friction.",
     decisions: [
       {
-        title: "Narrative order before section order",
-        body: "The page is sequenced like a sales conversation — the transformation first, proof and programs after, contact exactly when conviction peaks — instead of the usual about/services/contact template.",
+        title: "A gold-on-black identity, not a template palette",
+        body: "The serif display type and gold-accent-on-dark scheme were chosen to read as luxury grooming, not as a tech site. Every section holds the same two-color discipline so the brand stays composed.",
       },
       {
-        title: "One call to action, repeated with rhythm",
-        body: "Every section resolves toward the same booking action. No competing buttons, no newsletter detours — a single path, offered at each moment a visitor might be ready.",
+        title: "Booking as the single resolution",
+        body: "Home, services, gallery, about — every section resolves toward 'Book now'. One action, offered at each moment a visitor might be convinced, with no competing links to leak intent.",
       },
       {
-        title: "Speed as a credibility feature",
-        body: "Built lean on React and deployed on Vercel with a strict performance budget, because a slow site quietly tells a visitor the service will be sloppy too.",
+        title: "Photography-first layout",
+        body: "Large atmospheric imagery carries the craft; text stays short and confident. The hero splits type against a full-height photograph so the shop's style is the first thing that loads.",
       },
     ],
     challenges:
-      "The tension was pacing: sales-driven sections push urgency while credibility needs calm. Getting the rhythm right — confident copy, restrained motion, fast loads on mobile connections — took more iterations than any component.",
+      "Balancing richness with speed: full-height photography and an elegant feel, kept fast on mobile connections through image optimization and a lean React build — because a slow luxury site contradicts itself.",
     result:
-      "A live demo that reads like a premium coaching brand: fast, credible, and structured so every scroll moves a visitor closer to booking.",
+      "A live site that reads 'premium barbershop' at first glance — expert cuts, beard sculpting, luxury grooming — structured so every scroll moves a visitor toward the chair.",
   },
   {
     slug: "cybersecurity-lab",
     index: "03",
     title: "Enterprise Security Lab",
+    image: "/projects/cybersecurity-lab.png",
     group: "Cybersecurity",
     kind: "Multi-OS attack & defense environment",
     tags: ["Kali Linux", "MikroTik", "Wazuh", "Zabbix", "Metasploit"],
@@ -186,6 +193,7 @@ export const caseStudies: CaseStudy[] = [
     slug: "linux-infrastructure",
     index: "04",
     title: "7-Server Linux Infrastructure",
+    image: "/projects/linux-infrastructure.png",
     group: "Infrastructure & Cloud",
     kind: "Enterprise service stack",
     tags: ["Ubuntu", "DNS", "DHCP", "Apache", "Postfix", "Samba + AD"],
@@ -223,32 +231,64 @@ export const caseStudies: CaseStudy[] = [
     result:
       "A complete enterprise backbone — DHCP, DNS, Apache virtual hosting, Postfix, NFS, SSH, and Samba with AD — serving real client machines over an internal network, built and validated end to end.",
   },
+  {
+    slug: "openstack-cloud",
+    index: "05",
+    title: "OpenStack Private Cloud",
+    image: "/projects/openstack-cloud.png",
+    imageFit: "contain",
+    group: "Infrastructure & Cloud",
+    kind: "Private cloud deployment",
+    tags: ["OpenStack", "MicroStack", "Ubuntu", "SSH"],
+    summary:
+      "A private cloud built with MicroStack on Ubuntu: virtual networks, a cloud router, compute instances, storage volumes, and remote SSH access.",
+    summaryFr:
+      "Cloud privé avec MicroStack sur Ubuntu : réseaux virtuels, routeur cloud, instances de calcul, volumes de stockage et accès SSH distant.",
+    context:
+      "Public cloud hides the machinery. To understand what AWS actually does, I built the machinery myself — an OpenStack cloud on my own hardware.",
+    role:
+      "Sole engineer — deployed MicroStack, designed the virtual network topology, and provisioned compute, storage, and access end to end.",
+    outcome:
+      "A working private cloud: launch an instance, attach a volume, route it through a virtual network, reach it over SSH — the full lifecycle, self-hosted.",
+    lesson:
+      "Cloud is not magic; it is networking, storage, and compute with good APIs. Owning the whole stack once makes every managed service legible forever.",
+    year: "2025",
+    problem:
+      "Cloud skills learned through a console teach you buttons, not systems. The goal was to stand up the entire IaaS layer — the part AWS never shows you — and operate it: networks, routing, images, instances, volumes, and access.",
+    decisions: [
+      {
+        title: "MicroStack for a full stack on one host",
+        body: "MicroStack packages OpenStack's core services to run on a single Ubuntu machine — the complete architecture (Neutron networking, Nova compute, Cinder storage) without a datacenter's hardware bill.",
+      },
+      {
+        title: "Virtual topology before instances",
+        body: "Networks, subnets, and the cloud router were designed first, so every instance launched into a deliberate topology instead of a default flat network — the same discipline as physical network design.",
+      },
+      {
+        title: "Remote access as the acceptance test",
+        body: "The deployment only counted as done when an instance was reachable over SSH from outside the cloud — floating IP, security rules, and routing all proven in one connection.",
+      },
+    ],
+    challenges:
+      "Resource pressure and opacity: OpenStack's services are heavy for one host, and when instance networking fails, the fault can sit in any of four layers. Debugging meant reading each service's view of the world until they agreed.",
+    result:
+      "A self-hosted private cloud with virtual networks, a router, compute instances, and attached storage volumes — administered remotely over SSH, from bare Ubuntu to running workloads.",
+  },
 ];
 
 export const archiveProjects: Project[] = [
   ...caseStudies,
   {
-    slug: "barber-demo",
-    title: "Barber Studio",
+    slug: "coach-marcus",
+    title: "Coach Marcus",
     group: "Web",
-    kind: "Demo website",
-    tags: ["React", "Vercel", "Responsive"],
-    demo: "https://ateh-barberdemo.vercel.app/",
+    kind: "Conversion-focused fitness site",
+    tags: ["React", "Vercel", "Landing Page"],
+    demo: "https://ateh-coach-marcus-demo.vercel.app/",
     summary:
-      "Clean, responsive demo website for a barber shop — services, style, and booking-ready calls to action.",
+      "A modern fitness coaching site with conversion-focused sections for programs, offers, testimonials, and contact.",
     summaryFr:
-      "Site démo propre et responsive pour un salon de coiffure — services, style et appels à l'action prêts pour la réservation.",
-  },
-  {
-    slug: "openstack-cloud",
-    title: "OpenStack Private Cloud",
-    group: "Infrastructure & Cloud",
-    kind: "Cloud deployment",
-    tags: ["OpenStack", "MicroStack", "Ubuntu", "SSH"],
-    summary:
-      "Private cloud with MicroStack on Ubuntu: virtual networks, cloud router, compute instances, storage volumes, and remote SSH access.",
-    summaryFr:
-      "Cloud privé avec MicroStack sur Ubuntu : réseaux virtuels, routeur cloud, instances de calcul, volumes de stockage et accès SSH distant.",
+      "Site moderne pour coach sportif, avec sections orientées conversion pour programmes, offres, témoignages et contact.",
   },
   {
     slug: "school-management",

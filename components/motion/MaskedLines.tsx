@@ -16,13 +16,21 @@ type Props = {
   as?: "h1" | "h2" | "h3" | "p" | "span";
   className?: string;
   delay?: number;
+  /** Seconds; defaults to the house reveal duration. */
+  duration?: number;
 };
 
 /**
  * The house headline reveal: each line rises from behind an overflow clip.
  * Content is present in server HTML; GSAP only hides it once JS runs.
  */
-export function MaskedLines({ lines, as: Tag = "h2", className = "", delay = 0 }: Props) {
+export function MaskedLines({
+  lines,
+  as: Tag = "h2",
+  className = "",
+  delay = 0,
+  duration = DUR.reveal,
+}: Props) {
   const ref = useRef<HTMLHeadingElement>(null);
   const reduced = usePrefersReducedMotion();
 
@@ -39,7 +47,7 @@ export function MaskedLines({ lines, as: Tag = "h2", className = "", delay = 0 }
         { yPercent: 110 },
         {
           yPercent: 0,
-          duration: DUR.reveal,
+          duration,
           ease: EASE.out,
           stagger: STAGGER,
           delay,
@@ -48,7 +56,7 @@ export function MaskedLines({ lines, as: Tag = "h2", className = "", delay = 0 }
       );
     }, ref);
     return () => ctx.revert();
-  }, [reduced, delay]);
+  }, [reduced, delay, duration]);
 
   return (
     <Tag ref={ref as React.Ref<never>} className={className}>

@@ -4,7 +4,8 @@ import { process } from "@/lib/data";
 
 export function Process() {
   return (
-    <section id="process" className="border-y border-line bg-ink-2">
+    // second light passage — the page alternates dark and light movements
+    <section id="process" className="theme-light border-y border-line bg-ink text-bone">
       <div className="mx-auto max-w-site scroll-mt-24 px-6 py-28 md:px-10 md:py-40">
         <SectionHeading
           index="06"

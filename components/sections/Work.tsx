@@ -1,119 +1,133 @@
-import fs from "node:fs";
-import path from "node:path";
 import Image from "next/image";
 import Link from "next/link";
 import { SectionHeading } from "./SectionHeading";
 import { Reveal } from "@/components/motion/Reveal";
+import { Parallax } from "@/components/motion/Parallax";
+import { FadeThrough } from "@/components/motion/FadeThrough";
 import { ArrowUpRight } from "@/components/ui/Icons";
 import { caseStudies, archiveProjects, type CaseStudy } from "@/lib/data";
+import { resolvePublicImage } from "@/lib/resolve-image";
 
-/**
- * Screenshot auto-detection (build time): drop a capture at
- * public/projects/<slug>.jpg (or .png/.webp) and the card uses it —
- * no code change needed. Until then, an abstract composition holds the frame.
- */
-function screenshotFor(slug: string): string | null {
-  for (const ext of ["jpg", "jpeg", "png", "webp"]) {
-    if (fs.existsSync(path.join(process.cwd(), "public", "projects", `${slug}.${ext}`))) {
-      return `/projects/${slug}.${ext}`;
-    }
-  }
-  return null;
-}
-
-/** Abstract stand-in visual: dot grid + oversized index numeral. */
-function AbstractVisual({ project }: { project: CaseStudy }) {
+function MetaRow({ label, children }: { label: string; children: React.ReactNode }) {
   return (
-    <div className="absolute inset-0">
-      <div
-        aria-hidden
-        className="absolute inset-0 opacity-40"
-        style={{
-          backgroundImage: "radial-gradient(rgba(237,236,230,0.14) 1px, transparent 1px)",
-          backgroundSize: "26px 26px",
-        }}
-      />
-      <span className="label-mono absolute left-6 top-6">{project.kind}</span>
-      <span className="absolute bottom-2 right-6 font-serif text-[9rem] italic leading-none text-bone/[0.07] transition-colors duration-700 group-hover:text-brass/25 md:text-[13rem]">
-        {project.index}
-      </span>
+    <div className="rule py-4">
+      <p className="label-mono mb-2 !text-brass">{label}</p>
+      <p className="text-sm leading-relaxed text-silver">{children}</p>
     </div>
   );
 }
 
-function ShowcaseCard({
-  project,
-  shot,
-  wide,
-}: {
-  project: CaseStudy;
-  shot: string | null;
-  wide: boolean;
-}) {
+function CasePanel({ project, flip }: { project: CaseStudy; flip: boolean }) {
+  const image = resolvePublicImage(project.image);
+
   return (
-    <Reveal>
-      <Link
-        href={`/work/${project.slug}`}
-        aria-label={`Open the ${project.title} case study`}
-        className="group block"
-        data-cursor="hover"
-      >
-        {/* the visual — ~80% of the card */}
-        <div
-          className={`relative overflow-hidden bg-ink-2 ${
-            wide ? "aspect-[16/9] md:aspect-[21/10]" : "aspect-[16/10]"
-          }`}
+    <article className="grid gap-8 md:grid-cols-12 md:gap-10">
+      {/* Visual panel — screenshot showcase (typographic composition as fallback) */}
+      <div className={`md:col-span-7 ${flip ? "md:order-2" : ""}`}>
+        <Link
+          href={`/work/${project.slug}`}
+          aria-label={`Read the ${project.title} case study`}
+          className="group relative block aspect-[4/3] overflow-hidden bg-ink-2 md:aspect-[16/11]"
         >
-          {shot ? (
+          {image ? (
             <>
-              <Image
-                src={shot}
-                alt={`${project.title} — interface`}
-                fill
-                sizes={wide ? "(max-width: 768px) 100vw, 1600px" : "(max-width: 768px) 100vw, 50vw"}
-                className="object-cover object-top transition-transform duration-[1400ms] ease-out group-hover:scale-[1.05]"
-              />
-              {/* dark veil lifts on hover — the Netflix move */}
-              <div className="absolute inset-0 bg-ink/40 transition-opacity duration-500 group-hover:opacity-0" />
-              <span className="label-mono absolute left-6 top-6 bg-ink/70 px-3 py-1.5">
-                {project.kind}
+              <div className="absolute inset-0 overflow-hidden">
+                <Image
+                  src={image}
+                  alt={`${project.title} — ${project.kind}`}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 58vw"
+                  className={`transition-transform duration-700 ease-out group-hover:scale-[1.04] ${
+                    project.imageFit === "contain" ? "object-contain p-10 md:p-16" : "object-cover"
+                  }`}
+                />
+              </div>
+              {/* readability gradient + title bar over the screenshot */}
+              <div className="absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-ink/95 via-ink/55 to-transparent transition-opacity duration-500" />
+              <div className="absolute inset-x-0 bottom-0 flex items-end justify-between p-6 md:p-8">
+                <div>
+                  <p className="label-mono mb-2">{project.kind}</p>
+                  <p className="display text-2xl transition-transform duration-500 ease-out group-hover:-translate-y-1 md:text-4xl">
+                    {project.title}
+                  </p>
+                </div>
+                <span className="mb-1 flex h-10 w-10 items-center justify-center border border-bone/25 bg-ink/60 opacity-0 transition-all duration-500 group-hover:opacity-100">
+                  <ArrowUpRight className="text-bone" />
+                </span>
+              </div>
+              <span className="label-mono absolute right-4 top-4 bg-ink/70 px-2.5 py-1.5 !text-brass">
+                {project.index}
               </span>
             </>
           ) : (
-            <AbstractVisual project={project} />
+            <Parallax speed={0.08} className="absolute inset-0">
+              <div className="absolute inset-0 flex flex-col justify-between p-6 md:p-10">
+                <div className="flex items-start justify-between">
+                  <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-smoke">
+                    {project.kind}
+                  </span>
+                  <span className="font-serif text-7xl italic leading-none text-bone/[0.07] transition-colors duration-700 group-hover:text-brass/20 md:text-9xl">
+                    {project.index}
+                  </span>
+                </div>
+                <div>
+                  <p className="display text-[clamp(2rem,4.5vw,4rem)] transition-transform duration-700 ease-out group-hover:-translate-y-1.5">
+                    {project.title}
+                  </p>
+                  <div className="rule mt-6 flex flex-wrap gap-x-5 gap-y-2 pt-4">
+                    {project.tags.map((tag) => (
+                      <span key={tag} className="font-mono text-[11px] tracking-wide text-smoke">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </Parallax>
           )}
+          {/* corner ticks — technical-drawing framing */}
+          <span aria-hidden className="absolute left-3 top-3 h-3 w-3 border-l border-t border-bone/20" />
+          <span aria-hidden className="absolute bottom-3 right-3 h-3 w-3 border-b border-r border-bone/20" />
+        </Link>
+      </div>
 
-          {/* technical corner ticks */}
-          <span aria-hidden className="absolute left-3 top-3 h-3 w-3 border-l border-t border-bone/25" />
-          <span aria-hidden className="absolute bottom-3 right-3 h-3 w-3 border-b border-r border-bone/25" />
-        </div>
-
-        {/* the caption bar */}
-        <div className="rule flex items-start justify-between gap-6 py-5 md:py-6">
-          <div className="min-w-0">
-            <h3 className="display text-2xl transition-colors duration-300 md:text-3xl">
-              {project.title}
-            </h3>
-            <p className="mt-2 max-w-[64ch] text-sm leading-relaxed text-silver">
-              {project.summary}
-            </p>
-            <p className="mt-3 font-mono text-[11px] tracking-[0.14em] text-smoke">
-              {project.tags.join(" · ")}
-            </p>
+      {/* Case-study meta */}
+      <div className={`md:col-span-5 ${flip ? "md:order-1" : ""}`}>
+        <div className="flex h-full flex-col justify-between">
+          <div>
+            <h3 className="sr-only">{project.title}</h3>
+            <MetaRow label="Context">{project.context}</MetaRow>
+            <MetaRow label="Role">{project.role}</MetaRow>
+            <MetaRow label="Outcome">{project.outcome}</MetaRow>
+            <MetaRow label="Lesson">{project.lesson}</MetaRow>
           </div>
-          {/* arrow slides into view on hover */}
-          <span className="mt-2 shrink-0 translate-x-2 opacity-0 transition-all duration-400 ease-out group-hover:translate-x-0 group-hover:opacity-100">
-            <ArrowUpRight size={26} className="text-brass" />
-          </span>
+          <div className="mt-6 flex flex-wrap items-center gap-x-8 gap-y-3">
+            <Link
+              href={`/work/${project.slug}`}
+              className="group/link inline-flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.18em] text-brass"
+            >
+              <span className="link-quiet">Read case study</span>
+              <ArrowUpRight className="transition-transform duration-300 group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5" />
+            </Link>
+            {project.demo && (
+              <a
+                href={project.demo}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group/link inline-flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.18em] text-bone"
+              >
+                <span className="link-quiet">Visit live site</span>
+                <ArrowUpRight className="transition-transform duration-300 group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5" />
+              </a>
+            )}
+          </div>
         </div>
-      </Link>
-    </Reveal>
+      </div>
+    </article>
   );
 }
 
 export function Work() {
-  const shots = Object.fromEntries(caseStudies.map((c) => [c.slug, screenshotFor(c.slug)]));
-
   return (
     <section id="work" className="mx-auto max-w-site scroll-mt-24 px-6 py-28 md:px-10 md:py-40">
       <SectionHeading
@@ -126,16 +140,13 @@ export function Work() {
         ]}
       />
 
-      {/* editorial pacing: flagship full-width, then two-up, then full-width */}
-      <div className="mt-16 space-y-16 md:mt-24 md:space-y-24">
-        <ShowcaseCard project={caseStudies[0]} shot={shots[caseStudies[0].slug]} wide />
-        <div className="grid gap-16 md:grid-cols-2 md:gap-10">
-          <ShowcaseCard project={caseStudies[1]} shot={shots[caseStudies[1].slug]} wide={false} />
-          <div className="md:mt-24">
-            <ShowcaseCard project={caseStudies[2]} shot={shots[caseStudies[2].slug]} wide={false} />
-          </div>
-        </div>
-        <ShowcaseCard project={caseStudies[3]} shot={shots[caseStudies[3].slug]} wide />
+      {/* one case on stage at a time: each panel dissolves in, then hands over */}
+      <div className="mt-16 space-y-24 md:mt-24 md:space-y-40">
+        {caseStudies.map((project, i) => (
+          <FadeThrough key={project.slug}>
+            <CasePanel project={project} flip={i % 2 === 1} />
+          </FadeThrough>
+        ))}
       </div>
 
       <Reveal className="mt-20 md:mt-28">

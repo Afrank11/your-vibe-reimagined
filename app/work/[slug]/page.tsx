@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { resolvePublicImage } from "@/lib/resolve-image";
 import { MaskedLines } from "@/components/motion/MaskedLines";
 import { Reveal } from "@/components/motion/Reveal";
 import { Parallax } from "@/components/motion/Parallax";
@@ -68,14 +70,30 @@ export default async function CaseStudyPage({ params }: Props) {
         <p className="text-lg leading-relaxed text-silver md:text-xl">{study.summary}</p>
       </Reveal>
 
-      {/* Cinematic divider panel */}
+      {/* Cinematic hero panel — full-bleed screenshot when available */}
       <Reveal className="mt-16 md:mt-20">
-        <div className="relative aspect-[16/7] overflow-hidden bg-ink-2">
-          <Parallax speed={0.1} className="absolute inset-0 flex items-center justify-center">
-            <span className="font-serif text-[30vw] italic leading-none text-bone/[0.05] md:text-[18vw]">
-              {study.index}
-            </span>
-          </Parallax>
+        <div className="relative aspect-[16/8] overflow-hidden bg-ink-2 md:aspect-[16/7]">
+          {resolvePublicImage(study.image) ? (
+            <>
+              <Image
+                src={study.image!}
+                alt={`${study.title} — ${study.kind}`}
+                fill
+                priority
+                sizes="(max-width: 768px) 100vw, 90vw"
+                className={
+                  study.imageFit === "contain" ? "object-contain p-10 md:p-20" : "object-cover"
+                }
+              />
+              <div className="absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-ink/80 to-transparent" />
+            </>
+          ) : (
+            <Parallax speed={0.1} className="absolute inset-0 flex items-center justify-center">
+              <span className="font-serif text-[30vw] italic leading-none text-bone/[0.05] md:text-[18vw]">
+                {study.index}
+              </span>
+            </Parallax>
+          )}
           <span aria-hidden className="absolute left-4 top-4 h-3 w-3 border-l border-t border-bone/20" />
           <span aria-hidden className="absolute bottom-4 right-4 h-3 w-3 border-b border-r border-bone/20" />
           <span className="label-mono absolute bottom-4 left-4">{study.group}</span>

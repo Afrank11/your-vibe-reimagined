@@ -41,7 +41,14 @@ export function Contact() {
         </Reveal>
 
         <div className="mt-16 md:mt-20">
-          <Reveal stagger>
+          <Reveal className="mb-4 flex items-center gap-2">
+            <span className="relative flex h-2 w-2">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-brass opacity-60" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-brass" />
+            </span>
+            <p className="label-mono">Pick a channel — every row is one click</p>
+          </Reveal>
+          <Reveal stagger pop duration={0.7}>
             {CHANNELS.map((channel) => (
               <a
                 key={channel.label}
@@ -54,10 +61,12 @@ export function Contact() {
                 <span className="display flex-1 truncate text-xl transition-transform duration-300 group-hover:translate-x-2 md:text-3xl">
                   {channel.value}
                 </span>
-                <ArrowUpRight
-                  size={22}
-                  className="shrink-0 text-smoke transition-all duration-300 group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-brass"
-                />
+                <span className="animate-nudge shrink-0">
+                  <ArrowUpRight
+                    size={22}
+                    className="text-smoke transition-colors duration-300 group-hover:text-brass"
+                  />
+                </span>
               </a>
             ))}
           </Reveal>

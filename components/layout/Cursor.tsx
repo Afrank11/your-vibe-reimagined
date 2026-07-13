@@ -57,14 +57,15 @@ export function Cursor() {
   if (!enabled) return null;
 
   return (
-    <div aria-hidden className="pointer-events-none fixed inset-0 z-[95]">
+    // mix-blend-difference keeps the cursor visible on both dark and light sections
+    <div aria-hidden className="pointer-events-none fixed inset-0 z-[95] mix-blend-difference">
       <div
         ref={dotRef}
-        className="absolute -ml-[3px] -mt-[3px] h-[6px] w-[6px] rounded-full bg-brass"
+        className="absolute -ml-[3px] -mt-[3px] h-[6px] w-[6px] rounded-full bg-[#edece6]"
       />
       <div
         ref={ringRef}
-        className="absolute -ml-4 -mt-4 h-8 w-8 rounded-full border border-bone/40 opacity-50"
+        className="absolute -ml-4 -mt-4 h-8 w-8 rounded-full border border-[#edece6]/60 opacity-50"
       />
     </div>
   );

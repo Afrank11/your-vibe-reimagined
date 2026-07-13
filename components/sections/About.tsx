@@ -2,11 +2,14 @@ import Image from "next/image";
 import { SectionHeading } from "./SectionHeading";
 import { Reveal } from "@/components/motion/Reveal";
 import { Parallax } from "@/components/motion/Parallax";
+import { FadeThrough } from "@/components/motion/FadeThrough";
 import { story, facts } from "@/lib/data";
 
 export function About() {
   return (
-    <section id="about" className="mx-auto max-w-site scroll-mt-24 px-6 py-28 md:px-10 md:py-40">
+    <section id="about" className="scroll-mt-24">
+      {/* the hero dissolves out while this dissolves in — a crossfade, not a scroll-past */}
+      <FadeThrough className="mx-auto max-w-site px-6 py-28 md:px-10 md:py-40">
       <SectionHeading
         index="02"
         label="About"
@@ -64,6 +67,7 @@ export function About() {
           </Reveal>
         </div>
       </div>
+      </FadeThrough>
     </section>
   );
 }

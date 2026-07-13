@@ -13,6 +13,23 @@
   --brass: #c2a57b;
 }
 
+/*
+ * Light passage: sections carrying .theme-light flip the token pairs, so
+ * every component written with bg-ink / text-bone / text-silver inverts
+ * automatically. Brass stays brass — it reads on both grounds.
+ */
+.theme-light {
+  --ink: #eae8e1;
+  --ink-2: #e0ddd4;
+  --ink-3: #d5d2c7;
+  --bone: #0d0d0c;
+  --silver: #504e47;
+  --smoke: #8b887d;
+  --line: rgba(13, 13, 12, 0.14);
+  --brass: #9a7c4f;
+  color-scheme: light;
+}
+
 @layer base {
   html {
     scroll-behavior: smooth;
@@ -109,9 +126,26 @@
   will-change: transform;
 }
 
+/* Contact rows: arrows gently nudge toward the corner — "click me" without words */
+@keyframes nudge {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(3px, -3px);
+  }
+}
+.animate-nudge {
+  animation: nudge 1.8s ease-in-out infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+  .animate-nudge {
+    animation: none;
   }
   *,
   *::before,

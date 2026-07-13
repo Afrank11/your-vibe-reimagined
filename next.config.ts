@@ -12,6 +12,8 @@ const nextConfig: NextConfig = {
       { source: "/contact", destination: "/#contact", permanent: true },
       { source: "/blog", destination: "/", permanent: true },
       { source: "/guestbook", destination: "/", permanent: true },
+      // coach-marcus was demoted from case study to archive entry
+      { source: "/work/coach-marcus", destination: "/work", permanent: true },
     ];
   },
 };

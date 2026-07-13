@@ -48,7 +48,7 @@ export function Header() {
   return (
     <header
       className={`fixed inset-x-0 top-0 z-[80] transition-colors duration-500 ${
-        scrolled && !open ? "border-b border-line bg-ink/90" : "border-b border-transparent"
+        scrolled && !open ? "border-b border-line bg-[#070707]" : "border-b border-transparent"
       }`}
     >
       <div className="mx-auto flex h-16 max-w-site items-center justify-between px-6 md:h-[72px] md:px-10">
