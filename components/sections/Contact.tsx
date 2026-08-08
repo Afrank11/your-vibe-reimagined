@@ -6,7 +6,8 @@ import { contact } from "@/lib/data";
 
 const CHANNELS = [
   { label: "Email", value: contact.email, href: `mailto:${contact.email}` },
-  { label: "WhatsApp", value: contact.phonePrimary, href: contact.whatsapp },
+  { label: "Call · WhatsApp", value: contact.phonePrimary, href: contact.whatsapp },
+  { label: "Call · WhatsApp", value: contact.phoneSecondary, href: contact.whatsappSecondary },
   { label: "GitHub", value: "github.com/Afrank11", href: contact.github },
   { label: "LinkedIn", value: "in/frank-ateh-ateh", href: contact.linkedin },
 ];
@@ -51,7 +52,7 @@ export function Contact() {
           <Reveal stagger pop duration={0.7}>
             {CHANNELS.map((channel) => (
               <a
-                key={channel.label}
+                key={channel.value}
                 href={channel.href}
                 target={channel.href.startsWith("mailto") ? undefined : "_blank"}
                 rel={channel.href.startsWith("mailto") ? undefined : "noopener noreferrer"}

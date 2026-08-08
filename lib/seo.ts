@@ -68,6 +68,8 @@ export const personJsonLd = {
     "React",
     "Next.js",
     "TypeScript",
+    "Flutter",
+    "Mobile App Development",
     "Linux",
     "OpenStack",
     "MikroTik",

@@ -6,7 +6,10 @@
 export const contact = {
   email: "atehfrank11@gmail.com",
   phonePrimary: "+237 653 667 494",
+  phoneSecondary: "+237 695 298 881",
+  /** Both numbers take calls and WhatsApp. */
   whatsapp: "https://wa.me/237653667494",
+  whatsappSecondary: "https://wa.me/237695298881",
   github: "https://github.com/Afrank11",
   githubRepos: "https://github.com/Afrank11?tab=repositories",
   linkedin: "https://linkedin.com/in/frank-ateh-ateh-98760321a",
@@ -408,14 +411,14 @@ export const archiveProjects: Project[] = [
   },
   {
     slug: "android-weather",
-    title: "Android Weather App",
+    title: "Weather App — Java & Flutter",
     group: "Mobile & Robotics",
-    kind: "Mobile application",
-    tags: ["Android Studio", "Java", "OpenWeather API"],
+    kind: "Mobile application, two builds",
+    tags: ["Android Studio", "Java", "Flutter", "Dart", "OpenWeather API"],
     summary:
-      "Android weather app with city autocomplete, OpenWeather real-time data, and local favorite-city storage.",
+      "Weather app with city autocomplete, OpenWeather real-time data, and local favorite-city storage — built twice: a native Android version in Java and a cross-platform Flutter version.",
     summaryFr:
-      "Application météo Android avec autocomplétion des villes, données temps réel OpenWeather et stockage local des villes favorites.",
+      "Application météo avec autocomplétion des villes, données temps réel OpenWeather et stockage local des villes favorites — développée en deux versions : Android natif en Java et multiplateforme en Flutter.",
   },
   {
     slug: "parking-robot",
@@ -610,7 +613,7 @@ export const expertise: Expertise[] = [
     title: "Frontend Engineering",
     description:
       "Interfaces people trust at first glance — fast, accessible, and precise, from design system to deployed product.",
-    tools: ["React", "Next.js", "TypeScript", "Tailwind CSS", "GSAP", "Webflow"],
+    tools: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Flutter", "GSAP", "Webflow"],
   },
   {
     index: "02",
