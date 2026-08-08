@@ -5,6 +5,8 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import { scrollToAnchor } from "@/components/providers/SmoothScroll";
+import { Download } from "@/components/ui/Icons";
+import { contact } from "@/lib/data";
 import { EASE } from "@/lib/motion";
 
 const NAV = [
@@ -53,16 +55,19 @@ export function Header() {
       }`}
     >
       <div className="mx-auto flex h-16 max-w-site items-center justify-between px-7 sm:px-10 md:h-[72px] md:px-16 xl:px-24">
+        {/* Monogram until there is room for the full name — never wraps */}
         <Link
           href="/"
-          className="font-sans text-sm font-semibold tracking-tight text-bone"
+          className="whitespace-nowrap font-sans text-sm font-semibold tracking-tight text-bone"
           onClick={() => setOpen(false)}
           aria-label="Ateh Frank Ateh — home"
         >
-          ATEH FRANK ATEH<span className="text-brass">.</span>
+          <span className="lg:hidden">AFA</span>
+          <span className="hidden lg:inline">ATEH FRANK ATEH</span>
+          <span className="text-brass">.</span>
         </Link>
 
-        <nav className="hidden items-center gap-8 md:flex" aria-label="Primary">
+        <nav className="hidden items-center gap-6 lg:flex xl:gap-8" aria-label="Primary">
           {NAV.map((item) => (
             <Link
               key={item.hash}
@@ -89,11 +94,32 @@ export function Header() {
           >
             Index
           </Link>
+          <a
+            href={contact.cv}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="label-mono group flex items-center gap-2 border border-brass/50 px-4 py-2.5 !text-brass transition-colors hover:bg-brass hover:!text-ink"
+          >
+            CV
+            <Download className="transition-transform duration-300 group-hover:translate-y-0.5" />
+          </a>
         </nav>
 
-        <button
-          type="button"
-          className="flex h-11 w-11 flex-col items-center justify-center gap-1.5 md:hidden"
+        {/* Tablet + mobile: CV stays reachable without opening the menu */}
+        <div className="flex items-center gap-2 lg:hidden">
+          <a
+            href={contact.cv}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => setOpen(false)}
+            className="label-mono flex items-center gap-2 border border-brass/50 px-3.5 py-2.5 !text-brass"
+          >
+            CV
+            <Download />
+          </a>
+          <button
+            type="button"
+            className="flex h-11 w-11 flex-col items-center justify-center gap-1.5"
           onClick={() => setOpen((v) => !v)}
           aria-expanded={open}
           aria-label={open ? "Close menu" : "Open menu"}
@@ -104,14 +130,15 @@ export function Header() {
           <span
             className={`block h-px w-6 bg-bone transition-transform duration-300 ${open ? "-translate-y-[3.5px] -rotate-45" : ""}`}
           />
-        </button>
+          </button>
+        </div>
       </div>
 
       <AnimatePresence>
         {open && (
           <motion.nav
             aria-label="Mobile"
-            className="fixed inset-0 top-16 z-[75] flex flex-col justify-between bg-ink px-6 pb-10 pt-12 md:hidden"
+            className="fixed inset-0 top-16 z-[75] flex flex-col justify-between overflow-y-auto bg-ink px-7 pb-10 pt-12 sm:px-10 lg:hidden"
             initial={{ opacity: 0, y: -12 }}
             animate={{ opacity: 1, y: 0, transition: { duration: 0.35, ease: EASE.outCurve } }}
             exit={{ opacity: 0, transition: { duration: 0.2 } }}
@@ -138,21 +165,33 @@ export function Header() {
                 </motion.li>
               ))}
             </ul>
-            <div className="grid grid-cols-2 gap-3">
-              <Link
-                href="/work"
+            <div className="mt-10 space-y-3">
+              <a
+                href={contact.cv}
+                target="_blank"
+                rel="noopener noreferrer"
                 onClick={() => setOpen(false)}
-                className="label-mono border border-line px-5 py-4 text-center !text-bone"
+                className="label-mono flex items-center justify-center gap-3 bg-brass px-5 py-4 !text-ink"
               >
-                Project index
-              </Link>
-              <Link
-                href="/notes"
-                onClick={() => setOpen(false)}
-                className="label-mono border border-line px-5 py-4 text-center !text-bone"
-              >
-                Notes
-              </Link>
+                <Download />
+                Download CV
+              </a>
+              <div className="grid grid-cols-2 gap-3">
+                <Link
+                  href="/work"
+                  onClick={() => setOpen(false)}
+                  className="label-mono border border-line px-5 py-4 text-center !text-bone"
+                >
+                  Project index
+                </Link>
+                <Link
+                  href="/notes"
+                  onClick={() => setOpen(false)}
+                  className="label-mono border border-line px-5 py-4 text-center !text-bone"
+                >
+                  Notes
+                </Link>
+              </div>
             </div>
           </motion.nav>
         )}
