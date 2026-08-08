@@ -9,7 +9,12 @@ import { expertise } from "@/lib/data";
  */
 export function Expertise() {
   return (
-    <section id="expertise" className="theme-light scroll-mt-24 border-y border-line bg-ink text-bone">
+    // overflow-hidden contains the rows' slide-in offsets, which would
+    // otherwise push past the viewport and create horizontal scroll
+    <section
+      id="expertise"
+      className="theme-light scroll-mt-24 overflow-hidden border-y border-line bg-ink text-bone"
+    >
       <div className="mx-auto max-w-site px-7 sm:px-10 py-28 md:px-16 xl:px-24 md:py-40">
         <SectionHeading
           index="03"

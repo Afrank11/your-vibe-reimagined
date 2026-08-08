@@ -34,6 +34,14 @@
   html {
     scroll-behavior: smooth;
     -webkit-text-size-adjust: 100%;
+    /* Safety net: entrance animations that start off-canvas must never
+       create a horizontal scrollbar. `clip` (not `hidden`) so it does not
+       become a scroll container — sticky positioning keeps working. */
+    overflow-x: clip;
+  }
+
+  body {
+    overflow-x: clip;
   }
 
   html.lenis,
