@@ -79,7 +79,7 @@ export default function OgImage() {
           <div style={{ display: "flex", width: 40, height: 2, background: brass }} />
           <div style={{ display: "flex", flex: 1, height: 1, background: "rgba(237,236,230,0.15)" }} />
           <div style={{ display: "flex", fontSize: 17, color: silver, letterSpacing: 4, marginLeft: 18 }}>
-            21 DOCUMENTED PROJECTS
+            23 DOCUMENTED PROJECTS
           </div>
         </div>
       </div>

@@ -58,8 +58,55 @@ export type CaseStudy = Project & {
 
 export const caseStudies: CaseStudy[] = [
   {
-    slug: "terra-talent-hub",
+    slug: "frinux-technologies",
     index: "01",
+    title: "Frinux Technologies",
+    image: "/projects/frinux.jpg",
+    group: "Web",
+    kind: "Software engineering studio — founder",
+    tags: ["Next.js", "TypeScript", "GSAP", "Brand & Strategy", "Studio"],
+    demo: "https://frinux.vercel.app",
+    summary:
+      "The software engineering studio I founded — where craft meets infrastructure, building websites, products, mobile and AI systems for ambitious brands.",
+    summaryFr:
+      "Le studio d'ingénierie logicielle que j'ai fondé — sites, produits, applications mobiles et systèmes IA pour des marques ambitieuses.",
+    context:
+      "Ambitious founders in Cameroon and beyond can find developers easily; what they cannot find is a team that treats design and infrastructure as one discipline. Frinux exists to be that team.",
+    role:
+      "Founder and lead engineer — positioning, brand, design system, site, and the delivery process behind every client engagement.",
+    outcome:
+      "A studio with a defined standard: five disciplines, six stages between idea and launch, and products shipped to production rather than presented as mockups.",
+    lesson:
+      "A studio is a promise before it is a portfolio. Naming the standard publicly is what makes it possible to hold yourself to it on every project.",
+    year: "2026 — present",
+    problem:
+      "Most agencies split the work: designers hand off to developers, and infrastructure is somebody else's problem after launch. The result is products that look right and behave badly — slow, fragile, hard to maintain. Frinux was founded to close that gap by refusing the handoff entirely.",
+    decisions: [
+      {
+        title: "Design and engineering under one standard",
+        body: "The studio pairs the discipline of network engineering with the obsession of design. The same people who choose the typography also own the deployment — so performance, accessibility, and maintainability are design decisions, not afterthoughts.",
+      },
+      {
+        title: "Five disciplines, one team",
+        body: "Web, product, mobile, AI systems, and infrastructure sit under one roof. Clients get a single accountable team across the whole stack instead of coordinating vendors who each blame the other.",
+      },
+      {
+        title: "A six-stage process, published openly",
+        body: "Discovery through launch is documented on the site itself. Publishing the process sets expectations before the first call and holds the studio to a repeatable standard on every engagement.",
+      },
+      {
+        title: "Tools chosen for problems, not posters",
+        body: "Next.js, TypeScript, Supabase, React Native, AI integration — the stack is deliberately boring where reliability matters and modern where it earns its keep, rather than chasing whatever is fashionable.",
+      },
+    ],
+    challenges:
+      "Building a studio brand from Cameroon that reads credibly to international clients meant the site itself had to be the proof — every performance budget, motion decision, and line of copy is an argument that the team can be trusted with someone else's product.",
+    result:
+      "Frinux Technologies is live at frinux.vercel.app: a studio for founders and teams who refuse average, shipping products in production across web, mobile, and AI.",
+  },
+  {
+    slug: "terra-talent-hub",
+    index: "02",
     title: "Terra Talent Hub",
     image: "/projects/terra-talent-hub.png",
     group: "Web",
@@ -106,7 +153,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: "reign-cuts",
-    index: "02",
+    index: "03",
     title: "Reign Cuts",
     image: "/projects/reign-cuts.png",
     group: "Web",
@@ -148,8 +195,55 @@ export const caseStudies: CaseStudy[] = [
       "A live site that reads 'premium barbershop' at first glance — expert cuts, beard sculpting, luxury grooming — structured so every scroll moves a visitor toward the chair.",
   },
   {
+    slug: "brightwell-cleaning",
+    index: "04",
+    title: "Brightwell Cleaning Co.",
+    image: "/projects/brightwell_cleaning_services.jpg",
+    group: "Web",
+    kind: "Local service business website",
+    tags: ["React", "Conversion Design", "Local SEO", "Lead Capture"],
+    demo: "https://cleaning-site-demo.vercel.app/",
+    summary:
+      "A trust-first website for a domestic and commercial cleaning company — transparent pricing, a before/after reveal, and quote capture on every screen.",
+    summaryFr:
+      "Site orienté confiance pour une entreprise de nettoyage — tarifs transparents, comparatif avant/après et demande de devis sur chaque écran.",
+    context:
+      "Local service businesses live or die on trust. A cleaning company asks strangers to hand over keys to their home — the website has to answer that anxiety before it asks for the booking.",
+    role:
+      "Design and build, end to end — service architecture, pricing presentation, interactive before/after, quote form, and deployment.",
+    outcome:
+      "A site where every objection is answered in place: insurance, vetted staff, no lock-in contracts, transparent hourly and fixed prices, and a quote request never more than one scroll away.",
+    lesson:
+      "For local services, specificity is credibility. Naming real neighbourhoods and exact prices converts better than any adjective.",
+    year: "2026",
+    problem:
+      "Cleaning companies compete against a default assumption of risk — will they show up, are they vetted, what will it actually cost? Most sites answer with stock photos and 'contact us for a quote', which asks the visitor to gamble first and learn later.",
+    decisions: [
+      {
+        title: "Prices on the page, not behind a form",
+        body: "Every service leads with a real figure — from £18/hour, from £150, from £160. Publishing prices filters out mismatched leads and signals confidence to the ones who fit.",
+      },
+      {
+        title: "An interactive before/after as the proof",
+        body: "A drag-to-reveal slider shows one kitchen before and after a deep clean. It is the single most persuasive element on the page because it demonstrates the outcome instead of describing it.",
+      },
+      {
+        title: "Trust markers placed where doubt appears",
+        body: "Fully insured, DBS-checked staff, eco-friendly products, satisfaction guarantee — surfaced as a strip directly under the hero, exactly where a first-time visitor's hesitation starts.",
+      },
+      {
+        title: "Two ways to convert, always visible",
+        body: "A quote form for people who plan and a WhatsApp button for people who decide now. Local service enquiries arrive on both channels, so the site never forces one behaviour.",
+      },
+    ],
+    challenges:
+      "Balancing volume with clarity: six services, pricing tiers, FAQs, reviews, and a booking flow on one page risks becoming a wall. The fix was strict sectioning and a repeated call to action, so the page reads as a guided conversation rather than a brochure.",
+    result:
+      "A complete local-business site — services with transparent pricing, before/after proof, three-step booking explanation, reviews, FAQs, and a same-day quote form — live at cleaning-site-demo.vercel.app.",
+  },
+  {
     slug: "cybersecurity-lab",
-    index: "03",
+    index: "05",
     title: "Enterprise Security Lab",
     image: "/projects/cybersecurity-lab.png",
     group: "Cybersecurity",
@@ -191,7 +285,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: "linux-infrastructure",
-    index: "04",
+    index: "06",
     title: "7-Server Linux Infrastructure",
     image: "/projects/linux-infrastructure.png",
     group: "Infrastructure & Cloud",
@@ -233,7 +327,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: "openstack-cloud",
-    index: "05",
+    index: "07",
     title: "OpenStack Private Cloud",
     image: "/projects/openstack-cloud.png",
     imageFit: "contain",
@@ -470,6 +564,17 @@ export const projectGroups: ProjectGroup[] = [
 /* About                                                               */
 /* ------------------------------------------------------------------ */
 
+/** My studio — linked wherever it is named in prose. */
+export const frinux = {
+  name: "Frinux Technologies",
+  url: "https://frinux.vercel.app",
+};
+
+/** Terms inside `story` that render as links. */
+export const storyLinks: Record<string, string> = {
+  [frinux.name]: frinux.url,
+};
+
 export const story = [
   "I'm Ateh Frank Ateh, a full-stack developer and network engineer from Yaoundé, Cameroon, trained at SUP'PTIC. I build web platforms, mobile apps, APIs, payment flows, network labs, and infrastructure projects.",
   "My curiosity started early, after fixing a locked Android phone through weeks of research, trial, and error. That moment taught me to look beneath the surface of technology and understand systems deeply.",
@@ -483,7 +588,7 @@ export const facts = [
   { label: "Base", value: "Yaoundé, Cameroon" },
   { label: "Formation", value: "SUP'PTIC — Telecommunications & ICT Engineering, 2026" },
   { label: "Foundation", value: "Computer Science" },
-  { label: "Founder", value: "Absurd Geeks · Frinux Technologies" },
+  { label: "Founder", value: "Absurd Geeks · Frinux Technologies", href: frinux.url },
   { label: "Languages", value: "English · French" },
   { label: "Status", value: "Available for select projects" },
 ];
@@ -601,12 +706,12 @@ export const record: RecordEntry[] = [
 ];
 
 export const distinctions = [
-  "Selected founder — U.S. Embassy accelerator",
+  "Selected founder — U.S. Embassy-backed accelerator",
   "Bronze mention — ODSA Hackathon",
   "Bronze mention — International Youth Math Challenge",
   "Founder — Absurd Geeks, digital marketing agency",
   "Founder — Frinux Technologies",
-  "21 documented projects · 50,000+ lines of code",
+  "23 documented projects · 50,000+ lines of code",
 ];
 
 /* ------------------------------------------------------------------ */
@@ -672,6 +777,7 @@ export type Testimonial = {
 export const testimonials: Testimonial[] = [];
 
 export const trustedBy = [
+  "Frinux Technologies",
   "CAMTEL",
   "Terra Talent Hub",
   "Zenorva Support",
@@ -681,7 +787,7 @@ export const trustedBy = [
 ];
 
 export const stats = [
-  { value: "21", label: "Documented projects" },
+  { value: "23", label: "Documented projects" },
   { value: "5", label: "Organizations shipped for" },
   { value: "50k+", label: "Lines of code" },
   { value: "2", label: "Working languages" },

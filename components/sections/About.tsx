@@ -54,9 +54,20 @@ export function About() {
                 className="rule flex items-baseline justify-between gap-6 py-3.5"
               >
                 <span className="label-mono shrink-0">{fact.label}</span>
-                <span className="text-right font-mono text-xs tracking-wide text-bone">
-                  {fact.value}
-                </span>
+                {"href" in fact && fact.href ? (
+                  <a
+                    href={fact.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="link-quiet text-right font-mono text-xs tracking-wide text-bone transition-colors hover:text-brass"
+                  >
+                    {fact.value}
+                  </a>
+                ) : (
+                  <span className="text-right font-mono text-xs tracking-wide text-bone">
+                    {fact.value}
+                  </span>
+                )}
               </div>
             ))}
           </Reveal>

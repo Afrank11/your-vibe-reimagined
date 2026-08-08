@@ -4,11 +4,34 @@ import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { EASE } from "@/lib/motion";
 import { Plus } from "@/components/ui/Icons";
+import { storyLinks } from "@/lib/data";
 
 type Props = {
   intro: string;
   rest: string[];
 };
+
+/** Turns named terms (e.g. "Frinux Technologies") into links, in place. */
+function linkify(text: string): React.ReactNode {
+  const terms = Object.keys(storyLinks);
+  if (terms.length === 0) return text;
+  const pattern = new RegExp(`(${terms.map((t) => t.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")).join("|")})`);
+  return text.split(pattern).map((part, i) =>
+    storyLinks[part] ? (
+      <a
+        key={i}
+        href={storyLinks[part]}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="link-quiet text-bone underline-offset-4 transition-colors hover:text-brass"
+      >
+        {part}
+      </a>
+    ) : (
+      part
+    ),
+  );
+}
 
 /**
  * Short introduction with the full story folded away — visitors who want
@@ -19,7 +42,9 @@ export function StoryExpander({ intro, rest }: Props) {
 
   return (
     <div>
-      <p className="max-w-[62ch] text-base leading-relaxed text-silver md:text-lg">{intro}</p>
+      <p className="max-w-[62ch] text-base leading-relaxed text-silver md:text-lg">
+        {linkify(intro)}
+      </p>
 
       <AnimatePresence initial={false}>
         {open && (
@@ -34,7 +59,7 @@ export function StoryExpander({ intro, rest }: Props) {
             <div className="space-y-6 pt-6">
               {rest.map((paragraph, i) => (
                 <p key={i} className="max-w-[62ch] text-base leading-relaxed text-silver md:text-lg">
-                  {paragraph}
+                  {linkify(paragraph)}
                 </p>
               ))}
             </div>

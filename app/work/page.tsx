@@ -7,7 +7,7 @@ import { archiveProjects } from "@/lib/data";
 export const metadata: Metadata = {
   title: "Work — Project Index",
   description:
-    "The complete project index of Frank Ateh: web platforms, network infrastructure, cybersecurity labs, cloud deployments, and data systems — 21 documented builds.",
+    "The complete project index of Frank Ateh: web platforms, network infrastructure, cybersecurity labs, cloud deployments, and data systems — 23 documented builds.",
   alternates: { canonical: "/work" },
 };
 
