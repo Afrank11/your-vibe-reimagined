@@ -1,6 +1,6 @@
 /**
- * Notes — engineering essays and build logs.
- * Add a new object to publish; /notes and the sitemap pick it up automatically.
+ * Blog — engineering essays and build logs.
+ * Add a new object to publish; /blog and the sitemap pick it up automatically.
  */
 
 export type ArticleBlock =

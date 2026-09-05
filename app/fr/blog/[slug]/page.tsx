@@ -13,12 +13,12 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const article = getArticleFor("en", slug);
+  const article = getArticleFor("fr", slug);
   if (!article) return {};
   return {
     title: article.title,
     description: article.excerpt,
-    alternates: alternatesFor("en", `/notes/${article.slug}`),
+    alternates: alternatesFor("fr", `/blog/${article.slug}`),
     openGraph: {
       type: "article",
       title: article.title,
@@ -31,5 +31,5 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function ArticlePage({ params }: Props) {
   const { slug } = await params;
-  return <ArticleView locale="en" slug={slug} />;
+  return <ArticleView locale="fr" slug={slug} />;
 }

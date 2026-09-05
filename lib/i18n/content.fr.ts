@@ -504,7 +504,7 @@ export const recordFr: Record<string, { title: string; org: string; detail: stri
       "Construction de la plateforme de vérification des compétences : évaluations DigComp, certificats vérifiés par QR code, paiements, tableaux de bord employeur.",
   },
   "2025": {
-    title: "Ingénieur systèmes réseau",
+    title: "Stage — Systèmes réseau",
     org: "CAMTEL — CESIR-IP",
     detail:
       "Supervision et maintenance d’une infrastructure IP de production — diagnostics, analyse de trafic et support au routage dans un environnement télécom en exploitation.",

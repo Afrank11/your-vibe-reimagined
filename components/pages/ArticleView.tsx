@@ -38,7 +38,7 @@ export function ArticleView({ locale, slug }: { locale: Locale; slug: string }) 
     description: article.excerpt,
     datePublished: article.date,
     inLanguage: htmlLang[locale],
-    url: `${SITE.url}${localizePath(locale, `/notes/${article.slug}`)}`,
+    url: `${SITE.url}${localizePath(locale, `/blog/${article.slug}`)}`,
     author: { "@type": "Person", "@id": `${SITE.url}/#person`, name: SITE.fullName },
   };
 
@@ -48,12 +48,12 @@ export function ArticleView({ locale, slug }: { locale: Locale; slug: string }) 
 
       <div className="mx-auto max-w-3xl">
         <div className="mb-10 flex flex-wrap items-baseline gap-x-4 gap-y-2 md:mb-14">
-          <Link href={localizePath(locale, "/notes")} className="link-quiet label-mono !text-brass">
-            {t.notesPage.eyebrow}
+          <Link href={localizePath(locale, "/blog")} className="link-quiet label-mono !text-brass">
+            {t.blogPage.eyebrow}
           </Link>
           <span className="label-mono">{article.displayDate}</span>
           <span className="label-mono">
-            {article.readingTime} {t.notesPage.readSuffix}
+            {article.readingTime} {t.blogPage.readSuffix}
           </span>
           <span className="rule mt-[0.35em] flex-1 self-start" />
         </div>
@@ -81,9 +81,9 @@ export function ArticleView({ locale, slug }: { locale: Locale; slug: string }) 
         </div>
 
         <Reveal className="mt-20 md:mt-24">
-          <p className="label-mono mb-4">{t.notesPage.nextEntry}</p>
+          <p className="label-mono mb-4">{t.blogPage.nextEntry}</p>
           <Link
-            href={localizePath(locale, `/notes/${next.slug}`)}
+            href={localizePath(locale, `/blog/${next.slug}`)}
             className="rule group flex items-center justify-between py-6"
           >
             <span className="display text-xl transition-transform duration-300 group-hover:translate-x-2 md:text-2xl">

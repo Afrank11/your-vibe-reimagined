@@ -24,7 +24,7 @@ const en = {
     distinctions: "Distinctions",
     process: "Process",
     contact: "Contact",
-    notes: "Notes",
+    blog: "Blog",
     index: "Index",
     projectIndex: "Project index",
   },
@@ -178,11 +178,11 @@ const en = {
     nextCase: "Next case",
   },
 
-  notesPage: {
-    title: "Notes — Engineering Essays & Build Logs",
+  blogPage: {
+    title: "Blog — Engineering Essays & Build Logs",
     description:
       "Field notes by Frank Ateh: essays on infrastructure, cybersecurity, networks, and building digital products — written from real builds, not theory.",
-    eyebrow: "Notes",
+    eyebrow: "Blog",
     count: (n: number) => `${n} entries — build logs & essays`,
     headingA: "Field",
     headingAccent: "notes.",
@@ -221,7 +221,7 @@ const fr: Dictionary = {
     distinctions: "Distinctions",
     process: "Méthode",
     contact: "Contact",
-    notes: "Notes",
+    blog: "Blog",
     index: "Index",
     projectIndex: "Index des projets",
   },
@@ -375,11 +375,11 @@ const fr: Dictionary = {
     nextCase: "Cas suivant",
   },
 
-  notesPage: {
-    title: "Notes — Essais d’ingénierie & carnets de bord",
+  blogPage: {
+    title: "Blog — Essais d’ingénierie & carnets de bord",
     description:
       "Les notes de terrain de Frank Ateh : essais sur l’infrastructure, la cybersécurité, les réseaux et la création de produits numériques — écrits depuis de vrais projets, pas depuis la théorie.",
-    eyebrow: "Notes",
+    eyebrow: "Blog",
     count: (n: number) => `${n} entrées — carnets de bord & essais`,
     headingA: "Notes de",
     headingAccent: "terrain.",

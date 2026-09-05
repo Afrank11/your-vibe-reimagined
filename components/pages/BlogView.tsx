@@ -6,15 +6,15 @@ import { localizePath, type Locale } from "@/lib/i18n/config";
 import { getArticles } from "@/lib/i18n/articles";
 import { getDictionary } from "@/lib/i18n/dictionary";
 
-export function NotesView({ locale }: { locale: Locale }) {
+export function BlogView({ locale }: { locale: Locale }) {
   const t = getDictionary(locale);
   const articles = getArticles(locale);
 
   return (
     <div className="mx-auto max-w-site px-7 sm:px-10 pb-28 pt-32 md:px-16 xl:px-24 md:pb-40 md:pt-44">
       <div className="mb-10 flex items-baseline gap-4 md:mb-14">
-        <span className="label-mono !text-brass">{t.notesPage.eyebrow}</span>
-        <span className="label-mono">{t.notesPage.count(articles.length)}</span>
+        <span className="label-mono !text-brass">{t.blogPage.eyebrow}</span>
+        <span className="label-mono">{t.blogPage.count(articles.length)}</span>
         <span className="rule mt-[0.35em] flex-1 self-start" />
       </div>
 
@@ -22,15 +22,15 @@ export function NotesView({ locale }: { locale: Locale }) {
         as="h1"
         className="display text-[clamp(2.8rem,7vw,7rem)]"
         lines={[
-          <span key="1">{t.notesPage.headingA}</span>,
+          <span key="1">{t.blogPage.headingA}</span>,
           <span key="2">
-            <span className="accent-serif">{t.notesPage.headingAccent}</span>
+            <span className="accent-serif">{t.blogPage.headingAccent}</span>
           </span>,
         ]}
       />
 
       <Reveal className="mt-8 max-w-xl">
-        <p className="text-base leading-relaxed text-silver">{t.notesPage.intro}</p>
+        <p className="text-base leading-relaxed text-silver">{t.blogPage.intro}</p>
       </Reveal>
 
       <div className="mt-16 md:mt-20">
@@ -38,7 +38,7 @@ export function NotesView({ locale }: { locale: Locale }) {
           {articles.map((article) => (
             <Link
               key={article.slug}
-              href={localizePath(locale, `/notes/${article.slug}`)}
+              href={localizePath(locale, `/blog/${article.slug}`)}
               className="rule group grid gap-3 py-8 transition-colors duration-300 hover:bg-ink-2 md:grid-cols-12 md:gap-6 md:px-2 md:py-10"
             >
               <span className="label-mono md:col-span-2">{article.displayDate}</span>

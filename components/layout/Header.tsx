@@ -22,8 +22,8 @@ export function Header({ cvFrAvailable }: { cvFrAvailable: boolean }) {
 
   const home = localizePath(locale, "/");
   const nav = [
-    { label: t.nav.work, hash: "#work" },
     { label: t.nav.about, hash: "#about" },
+    { label: t.nav.work, hash: "#work" },
     { label: t.nav.expertise, hash: "#expertise" },
     { label: t.nav.record, hash: "#record" },
     { label: t.nav.distinctions, hash: "#distinctions" },
@@ -85,12 +85,12 @@ export function Header({ cvFrAvailable }: { cvFrAvailable: boolean }) {
             </Link>
           ))}
           <Link
-            href={localizePath(locale, "/notes")}
+            href={localizePath(locale, "/blog")}
             className={`link-quiet label-mono transition-colors hover:!text-bone ${
-              basePath.startsWith("/notes") ? "!text-brass" : "!text-bone/70"
+              basePath.startsWith("/blog") ? "!text-brass" : "!text-bone/70"
             }`}
           >
-            {t.nav.notes}
+            {t.nav.blog}
           </Link>
           <Link
             href={localizePath(locale, "/work")}
@@ -177,11 +177,11 @@ export function Header({ cvFrAvailable }: { cvFrAvailable: boolean }) {
                   {t.nav.projectIndex}
                 </Link>
                 <Link
-                  href={localizePath(locale, "/notes")}
+                  href={localizePath(locale, "/blog")}
                   onClick={() => setOpen(false)}
                   className="label-mono border border-line px-5 py-4 text-center !text-bone"
                 >
-                  {t.nav.notes}
+                  {t.nav.blog}
                 </Link>
               </div>
               <LocaleSwitch

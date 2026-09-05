@@ -20,9 +20,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "yearly" as const,
       priority: 0.8,
     })),
-    { path: "/notes", lastModified: now, changeFrequency: "weekly", priority: 0.7 },
+    { path: "/blog", lastModified: now, changeFrequency: "weekly", priority: 0.7 },
     ...articles.map((a) => ({
-      path: `/notes/${a.slug}`,
+      path: `/blog/${a.slug}`,
       lastModified: new Date(a.date),
       changeFrequency: "yearly" as const,
       priority: 0.6,

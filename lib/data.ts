@@ -656,7 +656,7 @@ export const record: RecordEntry[] = [
   },
   {
     year: "2025",
-    title: "Network Systems Engineer",
+    title: "Network Systems Internship",
     org: "CAMTEL — CESIR-IP",
     detail:
       "Monitored and maintained production IP infrastructure — diagnostics, traffic analysis, routing support in a live telecom environment.",

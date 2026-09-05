@@ -136,6 +136,6 @@ export const breadcrumbJsonLd = {
   itemListElement: [
     { "@type": "ListItem", position: 1, name: "Home", item: SITE.url },
     { "@type": "ListItem", position: 2, name: "Work", item: `${SITE.url}/work` },
-    { "@type": "ListItem", position: 3, name: "Notes", item: `${SITE.url}/notes` },
+    { "@type": "ListItem", position: 3, name: "Blog", item: `${SITE.url}/blog` },
   ],
 };

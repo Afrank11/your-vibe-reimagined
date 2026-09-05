@@ -2,7 +2,7 @@ import { articles, type Article } from "@/lib/articles";
 import type { Locale } from "./config";
 
 /**
- * French editions of the notes. lib/articles.ts keeps the structure — slug,
+ * French editions of the blog posts. lib/articles.ts keeps the structure — slug,
  * ISO date, block order — and this file carries the prose. Blocks are matched
  * by position, so a translated article must keep the same block sequence.
  */
