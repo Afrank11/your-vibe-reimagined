@@ -6,7 +6,9 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SectionHeading } from "./SectionHeading";
 import { Reveal } from "@/components/motion/Reveal";
 import { Star, Sparkle } from "@/components/ui/Icons";
-import { record, distinctions } from "@/lib/data";
+import type { Locale } from "@/lib/i18n/config";
+import { getContent } from "@/lib/i18n/content";
+import { getDictionary } from "@/lib/i18n/dictionary";
 import { usePrefersReducedMotion } from "@/lib/use-reduced-motion";
 
 if (typeof window !== "undefined") {
@@ -39,7 +41,9 @@ function snakePath(n: number): string {
   return d;
 }
 
-export function Record() {
+export function Record({ locale }: { locale: Locale }) {
+  const t = getDictionary(locale);
+  const { record, distinctions } = getContent(locale);
   const snakeRef = useRef<HTMLDivElement>(null);
   const progressRef = useRef<SVGPathElement>(null);
   const dotRef = useRef<HTMLDivElement>(null);
@@ -97,16 +101,17 @@ export function Record() {
     });
 
     return () => st.kill();
-  }, [reduced, n]);
+  }, [reduced, n, record]);
 
   return (
     <section id="record" className="mx-auto max-w-site scroll-mt-24 px-7 sm:px-10 py-28 md:px-16 xl:px-24 md:py-40">
       <SectionHeading
         index="05"
-        label="Record"
+        label={t.record.label}
         lines={[
           <span key="1">
-            A short history of <span className="accent-serif">shipping.</span>
+            {t.record.headingA}
+            <span className="accent-serif">{t.record.headingAccent}</span>
           </span>,
         ]}
       />
@@ -196,7 +201,7 @@ export function Record() {
       <div id="distinctions" className="mt-24 scroll-mt-28 md:mt-32">
         <Reveal className="mb-8 flex items-center gap-3">
           <Sparkle className="text-brass" />
-          <p className="label-mono !text-bone">Distinctions</p>
+          <p className="label-mono !text-bone">{t.record.distinctions}</p>
           <Sparkle size={7} className="text-brass/70" />
           <span className="rule flex-1" />
         </Reveal>

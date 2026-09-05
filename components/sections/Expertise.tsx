@@ -1,13 +1,18 @@
 import { SectionHeading } from "./SectionHeading";
 import { Reveal } from "@/components/motion/Reveal";
-import { expertise } from "@/lib/data";
+import type { Locale } from "@/lib/i18n/config";
+import { getContent } from "@/lib/i18n/content";
+import { getDictionary } from "@/lib/i18n/dictionary";
 
 /**
  * Capabilities as a ledger, not cards. This is the site's first LIGHT
  * passage — .theme-light flips the color tokens so the page breathes
  * between dark movements. Rows slide in from alternating sides.
  */
-export function Expertise() {
+export function Expertise({ locale }: { locale: Locale }) {
+  const t = getDictionary(locale);
+  const { expertise } = getContent(locale);
+
   return (
     // overflow-hidden contains the rows' slide-in offsets, which would
     // otherwise push past the viewport and create horizontal scroll
@@ -18,10 +23,12 @@ export function Expertise() {
       <div className="mx-auto max-w-site px-7 sm:px-10 py-28 md:px-16 xl:px-24 md:py-40">
         <SectionHeading
           index="03"
-          label="Expertise"
+          label={t.expertise.label}
           lines={[
             <span key="1">
-              Capabilities, <span className="accent-serif">not</span> keywords.
+              {t.expertise.headingA}
+              <span className="accent-serif">{t.expertise.headingAccent}</span>
+              {t.expertise.headingB}
             </span>,
           ]}
         />

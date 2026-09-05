@@ -3,14 +3,14 @@ import { NotesView } from "@/components/pages/NotesView";
 import { alternatesFor } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/dictionary";
 
-const t = getDictionary("en");
+const t = getDictionary("fr");
 
 export const metadata: Metadata = {
   title: t.notesPage.title,
   description: t.notesPage.description,
-  alternates: alternatesFor("en", "/notes"),
+  alternates: alternatesFor("fr", "/notes"),
 };
 
 export default function NotesPage() {
-  return <NotesView locale="en" />;
+  return <NotesView locale="fr" />;
 }

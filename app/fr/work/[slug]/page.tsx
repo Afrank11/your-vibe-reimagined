@@ -13,18 +13,18 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const study = getCaseStudy("en", slug);
+  const study = getCaseStudy("fr", slug);
   if (!study) return {};
-  const t = getDictionary("en");
+  const t = getDictionary("fr");
   return {
     title: t.caseStudy.metaTitle(study.title),
     description: study.summary,
-    alternates: alternatesFor("en", `/work/${study.slug}`),
+    alternates: alternatesFor("fr", `/work/${study.slug}`),
     openGraph: { title: t.caseStudy.ogTitle(study.title), description: study.summary },
   };
 }
 
 export default async function CaseStudyPage({ params }: Props) {
   const { slug } = await params;
-  return <CaseStudyView locale="en" slug={slug} />;
+  return <CaseStudyView locale="fr" slug={slug} />;
 }

@@ -5,8 +5,11 @@ import { AnimatePresence, motion } from "framer-motion";
 import { EASE } from "@/lib/motion";
 import { Plus } from "@/components/ui/Icons";
 import { storyLinks } from "@/lib/data";
+import type { Locale } from "@/lib/i18n/config";
+import { getDictionary } from "@/lib/i18n/dictionary";
 
 type Props = {
+  locale: Locale;
   intro: string;
   rest: string[];
 };
@@ -37,8 +40,9 @@ function linkify(text: string): React.ReactNode {
  * Short introduction with the full story folded away — visitors who want
  * the whole journey click "Read my full story"; everyone else keeps scrolling.
  */
-export function StoryExpander({ intro, rest }: Props) {
+export function StoryExpander({ locale, intro, rest }: Props) {
   const [open, setOpen] = useState(false);
+  const t = getDictionary(locale);
 
   return (
     <div>
@@ -73,7 +77,7 @@ export function StoryExpander({ intro, rest }: Props) {
         aria-expanded={open}
         className="group mt-8 flex items-center gap-3 border border-line px-6 py-3.5 font-mono text-[11px] uppercase tracking-[0.18em] text-bone transition-colors hover:border-brass/60 hover:text-brass"
       >
-        {open ? "Read less" : "Read my full story"}
+        {open ? t.about.readLess : t.about.readMore}
         <Plus
           className={`transition-transform duration-300 ${open ? "rotate-45" : "group-hover:rotate-90"}`}
         />

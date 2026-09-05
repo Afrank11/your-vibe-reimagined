@@ -8,6 +8,11 @@ import { Footer } from "@/components/layout/Footer";
 import { Preloader } from "@/components/layout/Preloader";
 import { Cursor } from "@/components/layout/Cursor";
 import { Grain } from "@/components/layout/Grain";
+import { HtmlLang } from "@/components/layout/HtmlLang";
+import { SkipLink } from "@/components/layout/SkipLink";
+import { contact } from "@/lib/data";
+import { alternatesFor, ogLocale } from "@/lib/i18n/config";
+import { publicFileExists } from "@/lib/resolve-image";
 import { SITE, personJsonLd, websiteJsonLd, faqJsonLd, breadcrumbJsonLd } from "@/lib/seo";
 
 const grotesk = Space_Grotesk({
@@ -54,9 +59,7 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: SITE.fullName, url: SITE.url }],
   creator: SITE.fullName,
-  alternates: {
-    canonical: "/",
-  },
+  alternates: alternatesFor("en", "/"),
   // og/twitter images come from app/opengraph-image.tsx (file convention),
   // so previews always match the current design
   openGraph: {
@@ -65,7 +68,8 @@ export const metadata: Metadata = {
     siteName: SITE.fullName,
     title: SITE.title,
     description: SITE.description,
-    locale: "en_US",
+    locale: ogLocale.en,
+    alternateLocale: [ogLocale.fr],
   },
   twitter: {
     card: "summary_large_image",
@@ -94,8 +98,16 @@ export const viewport: Viewport = {
 const jsonLd = [personJsonLd, websiteJsonLd, faqJsonLd, breadcrumbJsonLd];
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
+  const cvFrAvailable = publicFileExists(contact.cv.fr);
+
   return (
-    <html lang="en" className={`${grotesk.variable} ${serif.variable} ${mono.variable}`}>
+    <html
+      lang="en"
+      // the /fr subtree restamps `lang` before hydration (app/fr/layout.tsx),
+      // which React would otherwise report as a mismatch on this element
+      suppressHydrationWarning
+      className={`${grotesk.variable} ${serif.variable} ${mono.variable}`}
+    >
       <body>
         {jsonLd.map((schema, i) => (
           <script
@@ -104,19 +116,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
           />
         ))}
-        <a
-          href="#main"
-          className="label-mono fixed left-4 top-4 z-[100] -translate-y-20 bg-ink-3 px-4 py-3 text-bone transition-transform focus:translate-y-0"
-        >
-          Skip to content
-        </a>
+        <HtmlLang />
+        <SkipLink />
         {/* quiet ambient network behind every dark passage of the page */}
         <div aria-hidden className="pointer-events-none fixed inset-0 opacity-40">
           <AmbientField />
         </div>
         <SmoothScroll>
           <Preloader />
-          <Header />
+          <Header cvFrAvailable={cvFrAvailable} />
           <main id="main">{children}</main>
           <Footer />
         </SmoothScroll>

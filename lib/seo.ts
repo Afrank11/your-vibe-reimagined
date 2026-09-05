@@ -10,6 +10,15 @@ export const SITE = {
   twitterHandle: "@Afrank11",
 } as const;
 
+/** French edition of the site-level copy (served at /fr). */
+export const SITE_FR = {
+  ...SITE,
+  title:
+    "Frank Ateh — Développeur full-stack & ingénieur réseaux | Ateh Frank, Cameroun",
+  description:
+    "Frank Ateh est développeur full-stack et ingénieur réseaux à Yaoundé, au Cameroun — ingénieur télécommunications formé à SUP’PTIC et fondateur d’Absurd Geeks et de Frinux Technologies. Ateh Frank construit des sites premium, des réseaux résilients et des systèmes sécurisés : 23 projets documentés.",
+} as const;
+
 const alternateNames = [
   "Frank Ateh",
   "Ateh Frank",
@@ -86,7 +95,7 @@ export const websiteJsonLd = {
   name: "Frank Ateh — Portfolio",
   alternateName: ["Ateh Frank Portfolio", "Ateh Frank Ateh", "Franck Ateh"],
   url: SITE.url,
-  inLanguage: "en",
+  inLanguage: ["en", "fr"],
   author: { "@id": `${SITE.url}/#person` },
 };
 

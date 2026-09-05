@@ -1,20 +1,27 @@
 import { SectionHeading } from "./SectionHeading";
 import { Reveal } from "@/components/motion/Reveal";
-import { testimonials, trustedBy, stats } from "@/lib/data";
+import type { Locale } from "@/lib/i18n/config";
+import { getContent } from "@/lib/i18n/content";
+import { getDictionary } from "@/lib/i18n/dictionary";
 
 /**
  * Social proof. Testimonials render automatically once added to lib/data.ts;
  * until then the section leads with verifiable trust: organizations and numbers.
  */
-export function Signals() {
+export function Signals({ locale }: { locale: Locale }) {
+  const t = getDictionary(locale);
+  const { testimonials, trustedBy, stats } = getContent(locale);
+
   return (
     <section id="signals" className="mx-auto max-w-site scroll-mt-24 px-7 sm:px-10 py-28 md:px-16 xl:px-24 md:py-40">
       <SectionHeading
         index="07"
-        label="Signals"
+        label={t.signals.label}
         lines={[
           <span key="1">
-            The work <span className="accent-serif">speaks</span> first.
+            {t.signals.headingA}
+            <span className="accent-serif">{t.signals.headingAccent}</span>
+            {t.signals.headingB}
           </span>,
         ]}
       />
@@ -51,7 +58,7 @@ export function Signals() {
       </Reveal>
 
       <Reveal className="mt-16 md:mt-20">
-        <p className="label-mono mb-6">Built with & for</p>
+        <p className="label-mono mb-6">{t.signals.trustedBy}</p>
         <ul className="flex flex-wrap gap-x-10 gap-y-4">
           {trustedBy.map((org) => (
             <li key={org} className="font-sans text-lg font-medium tracking-tight text-smoke transition-colors duration-300 hover:text-bone">

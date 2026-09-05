@@ -12,13 +12,13 @@ import { Reveal } from "@/components/motion/Reveal";
 import { ArrowDown, ArrowUpRight } from "@/components/ui/Icons";
 import { scrollToAnchor } from "@/components/providers/SmoothScroll";
 import { contact } from "@/lib/data";
+import { localizePath, type Locale } from "@/lib/i18n/config";
+import { getDictionary } from "@/lib/i18n/dictionary";
 import { usePrefersReducedMotion } from "@/lib/use-reduced-motion";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
 }
-
-const ROLES = ["Software Engineer", "Digital Product Builder", "Telecommunications Engineer"];
 
 /** Corner markers for the portrait frame — tiny technical ticks. */
 function FrameMarks() {
@@ -32,7 +32,9 @@ function FrameMarks() {
   );
 }
 
-export function Hero() {
+export function Hero({ locale }: { locale: Locale }) {
+  const t = getDictionary(locale);
+  const roles = t.hero.roles;
   const rootRef = useRef<HTMLElement>(null);
   const canvasWrapRef = useRef<HTMLDivElement>(null);
   const photoRef = useRef<HTMLDivElement>(null);
@@ -162,7 +164,7 @@ export function Hero() {
                 >
                   <Image
                     src="/ateh.jpg"
-                    alt="Frank Ateh — software engineer and telecommunications engineer"
+                    alt={t.hero.portraitAlt}
                     fill
                     priority
                     sizes="(max-width: 768px) 260px, 32vw"
@@ -181,7 +183,7 @@ export function Hero() {
                 <FrameMarks />
               </div>
               <div className="mt-3 flex items-center justify-between">
-                <span className="label-mono">Fig. 01 — The engineer</span>
+                <span className="label-mono">{t.hero.figure}</span>
                 <span className="label-mono hidden lg:block">{contact.coordinates}</span>
               </div>
             </div>
@@ -206,10 +208,10 @@ export function Hero() {
 
             <Reveal delay={delay + 0.75} duration={1.1} className="mt-6">
               <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-silver md:text-xs">
-                {ROLES.map((role, i) => (
+                {roles.map((role, i) => (
                   <span key={role}>
                     <span className="text-bone">{role}</span>
-                    {i < ROLES.length - 1 && <span className="mx-3 text-brass">•</span>}
+                    {i < roles.length - 1 && <span className="mx-3 text-brass">•</span>}
                   </span>
                 ))}
               </p>
@@ -217,8 +219,7 @@ export function Hero() {
 
             <Reveal delay={delay + 0.95} duration={1.1} className="mt-6">
               <p className="max-w-xl text-base leading-relaxed text-silver md:text-lg">
-                I design and engineer digital experiences where technology,
-                creativity, and performance meet.
+                {t.hero.statement}
               </p>
             </Reveal>
 
@@ -229,20 +230,20 @@ export function Hero() {
                   onClick={() => scrollToAnchor("#work")}
                   className="group flex items-center gap-3 bg-bone px-7 py-4 font-mono text-[11px] uppercase tracking-[0.18em] text-ink transition-colors hover:bg-brass"
                 >
-                  Explore my work
+                  {t.hero.exploreWork}
                   <ArrowDown className="transition-transform duration-300 group-hover:translate-y-0.5" />
                 </button>
               </Magnetic>
               <Magnetic>
                 <Link
-                  href="/#contact"
+                  href={`${localizePath(locale, "/")}#contact`}
                   onClick={(e) => {
                     e.preventDefault();
                     scrollToAnchor("#contact");
                   }}
                   className="group flex items-center gap-3 border border-line px-7 py-4 font-mono text-[11px] uppercase tracking-[0.18em] text-bone transition-colors hover:border-bone/50"
                 >
-                  Get in touch
+                  {t.hero.getInTouch}
                   <ArrowUpRight className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
                 </Link>
               </Magnetic>
@@ -255,11 +256,11 @@ export function Hero() {
       <div ref={stripRef} className="relative mx-auto w-full max-w-site px-7 sm:px-10 pb-8 md:px-16 xl:px-24 md:pb-10">
         <Reveal delay={delay + 1.35} duration={1.1} className="flex items-center gap-4">
           <span className="label-mono !text-brass">01</span>
-          <span className="label-mono">Scroll</span>
+          <span className="label-mono">{t.hero.scroll}</span>
           <span className="rule flex-1" />
           <span className="label-mono flex items-center gap-2">
             <span className="inline-block h-1.5 w-1.5 rounded-full bg-brass" aria-hidden />
-            Available for select projects
+            {t.hero.available}
           </span>
         </Reveal>
       </div>

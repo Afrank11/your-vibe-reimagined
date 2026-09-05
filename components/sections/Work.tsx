@@ -5,7 +5,10 @@ import { Reveal } from "@/components/motion/Reveal";
 import { Parallax } from "@/components/motion/Parallax";
 import { FadeThrough } from "@/components/motion/FadeThrough";
 import { ArrowUpRight } from "@/components/ui/Icons";
-import { caseStudies, archiveProjects, type CaseStudy } from "@/lib/data";
+import { type CaseStudy } from "@/lib/data";
+import { localizePath, type Locale } from "@/lib/i18n/config";
+import { getContent } from "@/lib/i18n/content";
+import { getDictionary, type Dictionary } from "@/lib/i18n/dictionary";
 import { resolvePublicImage } from "@/lib/resolve-image";
 
 function MetaRow({ label, children }: { label: string; children: React.ReactNode }) {
@@ -17,16 +20,19 @@ function MetaRow({ label, children }: { label: string; children: React.ReactNode
   );
 }
 
-function CasePanel({ project, flip }: { project: CaseStudy; flip: boolean }) {
+type PanelProps = { project: CaseStudy; flip: boolean; locale: Locale; t: Dictionary };
+
+function CasePanel({ project, flip, locale, t }: PanelProps) {
   const image = resolvePublicImage(project.image);
+  const href = localizePath(locale, `/work/${project.slug}`);
 
   return (
     <article className="grid gap-8 md:grid-cols-12 md:gap-10">
       {/* Visual panel — screenshot showcase (typographic composition as fallback) */}
       <div className={`md:col-span-7 ${flip ? "md:order-2" : ""}`}>
         <Link
-          href={`/work/${project.slug}`}
-          aria-label={`Read the ${project.title} case study`}
+          href={href}
+          aria-label={t.work.readCaseStudyAria(project.title)}
           className="group relative block aspect-[4/3] overflow-hidden bg-ink-2 md:aspect-[16/11]"
         >
           {image ? (
@@ -100,10 +106,10 @@ function CasePanel({ project, flip }: { project: CaseStudy; flip: boolean }) {
         <div className="mt-4 md:hidden">
           <p className="line-clamp-2 text-sm leading-relaxed text-silver">{project.summary}</p>
           <Link
-            href={`/work/${project.slug}`}
+            href={href}
             className="mt-3 inline-flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.18em] text-brass"
           >
-            <span className="link-quiet">View case study</span>
+            <span className="link-quiet">{t.work.viewCaseStudy}</span>
             <ArrowUpRight />
           </Link>
         </div>
@@ -114,17 +120,17 @@ function CasePanel({ project, flip }: { project: CaseStudy; flip: boolean }) {
         <div className="flex h-full flex-col justify-between">
           <div>
             <h3 className="sr-only">{project.title}</h3>
-            <MetaRow label="Context">{project.context}</MetaRow>
-            <MetaRow label="Role">{project.role}</MetaRow>
-            <MetaRow label="Outcome">{project.outcome}</MetaRow>
-            <MetaRow label="Lesson">{project.lesson}</MetaRow>
+            <MetaRow label={t.work.context}>{project.context}</MetaRow>
+            <MetaRow label={t.work.role}>{project.role}</MetaRow>
+            <MetaRow label={t.work.outcome}>{project.outcome}</MetaRow>
+            <MetaRow label={t.work.lesson}>{project.lesson}</MetaRow>
           </div>
           <div className="mt-6 flex flex-wrap items-center gap-x-8 gap-y-3">
             <Link
-              href={`/work/${project.slug}`}
+              href={href}
               className="group/link inline-flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.18em] text-brass"
             >
-              <span className="link-quiet">Read case study</span>
+              <span className="link-quiet">{t.work.readCaseStudy}</span>
               <ArrowUpRight className="transition-transform duration-300 group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5" />
             </Link>
             {project.demo && (
@@ -134,7 +140,7 @@ function CasePanel({ project, flip }: { project: CaseStudy; flip: boolean }) {
                 rel="noopener noreferrer"
                 className="group/link inline-flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.18em] text-bone"
               >
-                <span className="link-quiet">Visit live site</span>
+                <span className="link-quiet">{t.work.visitLiveSite}</span>
                 <ArrowUpRight className="transition-transform duration-300 group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5" />
               </a>
             )}
@@ -145,15 +151,20 @@ function CasePanel({ project, flip }: { project: CaseStudy; flip: boolean }) {
   );
 }
 
-export function Work() {
+export function Work({ locale }: { locale: Locale }) {
+  const t = getDictionary(locale);
+  const { caseStudies, archiveProjects } = getContent(locale);
+
   return (
     <section id="work" className="mx-auto max-w-site scroll-mt-24 px-7 sm:px-10 py-28 md:px-16 xl:px-24 md:py-40">
       <SectionHeading
         index="04"
-        label="Selected work"
+        label={t.work.label}
         lines={[
           <span key="1">
-            Projects that <span className="accent-serif">carry</span> weight.
+            {t.work.headingA}
+            <span className="accent-serif">{t.work.headingAccent}</span>
+            {t.work.headingB}
           </span>,
         ]}
       />
@@ -162,18 +173,18 @@ export function Work() {
       <div className="mt-16 space-y-16 md:mt-24 md:space-y-40">
         {caseStudies.map((project, i) => (
           <FadeThrough key={project.slug}>
-            <CasePanel project={project} flip={i % 2 === 1} />
+            <CasePanel project={project} flip={i % 2 === 1} locale={locale} t={t} />
           </FadeThrough>
         ))}
       </div>
 
       <Reveal className="mt-20 md:mt-28">
         <Link
-          href="/work"
+          href={localizePath(locale, "/work")}
           className="rule group flex items-center justify-between py-8 transition-colors duration-300 hover:bg-ink-2 md:px-4"
         >
           <span className="display text-2xl md:text-4xl">
-            Full index — {archiveProjects.length} projects
+            {t.work.fullIndex(archiveProjects.length)}
           </span>
           <ArrowUpRight
             size={28}
